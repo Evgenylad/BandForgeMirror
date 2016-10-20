@@ -12,6 +12,7 @@ export default new Vuex.Store({
   actions,
   getters,
   modules: {
-    shows
+    shows,
+    user
   }
 })

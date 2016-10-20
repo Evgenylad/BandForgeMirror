@@ -1,13 +1,15 @@
 <template>
   <div class="shows">
-
-  <h1>Shows</h1>
-  <md-whiteframe md-elevation="1" v-for="show in shows">
-    <div class="md-content">
-      <h2>{{show.name}}</h2>
-    </div class="md-content">
-  </md-whiteframe>
-
+    <h1>Shows</h1>
+    <md-whiteframe md-elevation="1" v-for="show in shows">
+      <div class="md-content">
+        <h2>{{show.name}}</h2>
+        <div text-align="right">
+          <md-icon>crosshairs</md-icon>
+        </div>
+      </div>
+      </div class="md-content">
+    </md-whiteframe>
   </div>
 </template>
 
@@ -25,6 +27,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
+@import '../styles/colors'
+hover = #5b5b5b
+
 * {
   color: #fff;
 }
@@ -38,6 +43,5 @@ export default {
 }
 .md-content {
   padding: 10px;
-  margin: 10px;
 }
 </style>

@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import Login from './components/Login'
 import Navbar from './components/Navbar'
 import Dashboard from './components/Dashboard'
 import Shows from './components/Shows'
@@ -15,6 +16,7 @@ import Sidebar from './components/Sidebar'
 export default {
   name: 'app',
   components: {
+    Login,
     Dashboard,
     Shows,
     Navbar,
@@ -23,23 +25,16 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="stylus">
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons")
 @import '../node_modules/vue-material/dist/vue-material.css'
-
-$primary-color-dark:   #455A64
-$primary-color:        #607D8B
-$primary-color-light:  #CFD8DC
-$primary-color-text:   #FFFFFF
-$accent-color:         #FF9800
-$primary-text-color:   #212121
-$secondary-text-color: #757575
-$divider-color:        #BDBDBD
+@import './styles/colors'
+@import './styles/grid'
 
 #app
 
 body
-  background-color: #454545
+  background-color: dark-background
   font-family: 'Roboto', Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
