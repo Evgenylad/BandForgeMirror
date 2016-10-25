@@ -1,36 +1,22 @@
 <template>
 
-  <div id="navbar">
-    <md-toolbar v-md-theme="'default'">
-      <md-button class="md-icon-button" @click="toggleLeftSidenav()">
-        <md-icon>menu</md-icon>
-      </md-button>
-      <h2 class="md-title">BandForge</h2>
+  <div class="navbar" id="navbar">
+    <md-toolbar class="navbar__toolbar" v-md-theme="'default'">
+      <div class="navbar__btnBlock">
+        <div class="navbar__activeBand">Active Band</div>
+        <div class="navbar__bandTitle">
+          <h1 class="navbar__bandName">Some Band</h1>
+          <md-button class="md-icon-button navbar__btn" @click="toggleLeftSidenav()">
+            <md-icon>arrow_drop_down</md-icon>
+          </md-button>
+        </div>
+      </div>
+      <h2 class="navbar__title md-title">BandForge</h2>
+      <div class="navbar__userBlock">
+
+      </div>
     </md-toolbar>
 
-    <md-sidenav class="md-left" ref="leftSidenav" @open="open('Left')" @close="close('Left')">
-      <md-toolbar class="md-large" v-md-theme="'default'">
-        <div class="md-toolbar-container">
-          <h3 class="md-title">Menu</h3>
-        </div>
-        <div class="md-toolbar-container">
-          <md-avatar class="md-avatar-icon md-large">
-             <md-icon>user</md-icon>
-          </md-avatar>
-        </div>
-      </md-toolbar>
-      <div class="md-toolbar" md-theme="'accent'">
-        <md-list>
-          <md-list-item>
-            <md-icon>dashboard</md-icon> <span>Dashboard</span>
-          </md-list-item>
-
-          <md-list-item>
-            <md-icon>event</md-icon> <span>Shows</span>
-          </md-list-item>
-        </md-list>
-      </div>
-    </md-sidenav>
   </div>
 
 </template>
@@ -60,12 +46,27 @@ export default {
 
 <style media="screen" lang="stylus">
 @import '../styles/colors'
+@import '../styles/navbar'
 
 .md-toolbar
-  background-color: secondary-text-color
+  background-color: secondary-background !important
   /*color: #51da62*/
   color: #fff
   font-family: 'Roboto'
+.md-sidenav-content
+  background-color: secondary-background !important
+  width: 257px !important
+  top: 64px !important
 .md-toolbar-container
   margin: 10px 0px
+.md-button .md-button .md-list-item-container
+  paddind: 0 10px;
+.md-list-item:hover > .md-list-item .md-icon
+  color: #21ce99
+.md-list-item .md-list-item-holder > .md-icon:first-child
+  margin-right: 10px
+.md-list-item .md-list-item-container
+  padding: 0 10px !important
+.md-list-item .md-icon
+  color: text-color
 </style>

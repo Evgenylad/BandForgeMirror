@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <navbar></navbar>
+    <login></login>
     <sidebar></sidebar>
+    <foo></foo>
     <router-view></router-view>
   </div>
 </template>
@@ -9,17 +11,15 @@
 <script>
 import Login from './components/Login'
 import Navbar from './components/Navbar'
-import Dashboard from './components/Dashboard'
-import Shows from './components/Shows'
+import Foo from './components/Foo'
 import Sidebar from './components/Sidebar'
 
 export default {
   name: 'app',
   components: {
     Login,
-    Dashboard,
-    Shows,
     Navbar,
+    Foo,
     Sidebar
   }
 }
@@ -34,7 +34,7 @@ export default {
 #app
 
 body
-  background-color: dark-background
+  background-color: main-background
   font-family: 'Roboto', Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale

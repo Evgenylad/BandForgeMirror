@@ -1,0 +1,88 @@
+@import '../styles/colors'
+.navbar
+  &__toolbar
+   padding: 0;
+   height: 64px !important;
+   min-height: 64px;
+
+  &__title
+   display: flex;
+   justify-content: center;
+   align-items: flex-start;
+   width: 60%;
+   height: 64px;
+   margin: 0;
+   padding: 0;
+   font-size: 12px !important;
+   text-align: center;
+
+  &__btnBlock
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content: center;
+   width: 13.2%;
+   min-width: 257px;
+   height: 64px;
+   padding-left: 10px;
+   background: green-background !important;
+
+  &__activeBand
+   height: 19px;
+   margin-top: 3px;
+   font-size: 12px !important;
+   line-height: 19px;
+   color: #2f2e2e;
+
+  &__bandTitle
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+   height: 24px;
+   color: #2f2e2e;
+
+  &__bandName
+   width: 80%;
+   height: 24px;
+   margin: 0;
+   font-size: 16px !important;
+   line-height: 24px;
+   font-weight: normal;
+
+  &__btn
+   position: absolute;
+   right: 5px;
+   top: 34px;
+   width: 20px !important;
+   min-width: 20px !important;
+   height: 20px !important;
+   min-height: 20px !important;
+   padding: 0 !important;
+   margin: 0 !important;
+
+  &__userBlock
+   display: flex;
+   width: 7.7%;
+   height: 64px;
+
+  &__listItemName
+   color: text-color
+   &:hover
+    color: green-background
+   &:active
+    color: green-background !important;
+
+  &__userEmail
+   text-align: center;
+   color: text-color
+   cursor: pointer
+   &:hover
+    color: green-background
+   &:active
+    color: green-background !important;
+  &__divider
+   width: 100%;
+   height: 1px;
+   background-color: text-color !important;
+   border-width: inherit;
