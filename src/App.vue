@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <navbar></navbar>
-    <login></login>
+    <login v-if="this.$store.state.loginPopupVisible == true"></login>
+    <signup v-if="this.$store.state.signUpPopupVisible == true"></signup>
     <sidebar></sidebar>
     <foo></foo>
     <router-view></router-view>
@@ -10,18 +11,22 @@
 
 <script>
 import Login from './components/Login'
+import Signup from './components/Signup'
 import Navbar from './components/Navbar'
 import Foo from './components/Foo'
 import Sidebar from './components/Sidebar'
+import store from './vuex/store'
 
 export default {
   name: 'app',
   components: {
     Login,
+    Signup,
     Navbar,
     Foo,
     Sidebar
-  }
+  },
+  store
 }
 </script>
 

@@ -9,7 +9,7 @@
    display: flex;
    justify-content: center;
    align-items: flex-start;
-   width: 60%;
+   width: 30%;
    height: 64px;
    margin: 0;
    padding: 0;
@@ -50,16 +50,24 @@
    line-height: 24px;
    font-weight: normal;
 
+  &__menu
+   display: flex;
+   width: 60%;
+
   &__btn
-   position: absolute;
-   right: 5px;
-   top: 34px;
-   width: 20px !important;
-   min-width: 20px !important;
-   height: 20px !important;
-   min-height: 20px !important;
-   padding: 0 !important;
-   margin: 0 !important;
+    &--tick
+     position: absolute;
+     right: 5px;
+     top: 34px;
+     width: 20px !important;
+     min-width: 20px !important;
+     height: 20px !important;
+     min-height: 20px !important;
+     padding: 0 !important;
+     margin: 0 !important;
+    &--btnMenu
+     background: green-background
+
 
   &__userBlock
    display: flex;

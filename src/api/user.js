@@ -1,7 +1,7 @@
 import { API_URL } from '../../config/constants'
 
 export default {
-  /*  getUser () {
+  getUser () {
     this.$http.get(API_URL + '/user')
     .then((user) => {
       console.log('user is: ', user)
@@ -11,9 +11,9 @@ export default {
     })
   },
 
-  loginUser (user) {
+  loginUser (user, context) {
     console.log(this)
-    this.$http.post(API_URL + '/user', user)
+    context.$http.post(API_URL + '/user/login', user)
     .then((user) => {
       console.log('User logged in')
       console.log(user)
@@ -23,14 +23,26 @@ export default {
     })
   },
 
+  signup (user, context) {
+    context.$http.post(API_URL + '/user/signup', user)
+    .then((user) => {
+      console.log('User logged in')
+      console.log(user)
+    })
+    .catch((err) => {
+      console.log(user)
+      console.log('Error logging in user: ', err)
+    })
+  },
+
   logoutUser () {
     this.$http.post(API_URL + '/logout')
     .then(() => {
       console.log('user logged out')
     })
-  } */
+  }
 
-  // User object will let us check authentication status
+  /* // User object will let us check authentication status
   user: {
     authenticated: false
   },
@@ -42,6 +54,6 @@ export default {
     }).error((err) => {
       context.error = err
     })
-  }
+  } */
 
 }

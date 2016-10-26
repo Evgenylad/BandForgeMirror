@@ -1,9 +1,9 @@
 <template>
-  <div class="login">
+  <div class="signup">
 
-    <md-whiteframe class="login-container">
-      <h1>Login</h1>
-      <md-content class="loginbox">
+    <md-whiteframe class="signup-container">
+      <h1>Sign Up</h1>
+      <md-content class="signupbox">
         <md-input-container>
           <!-- <label>Username</label> -->
           <md-input placeholder="Username"
@@ -17,14 +17,21 @@
                     v-model="credentials.password">
           </md-input>
         </md-input-container>
+
+        <md-input-container>
+          <!-- <label>Password</label> -->
+          <md-input placeholder="Confirm Password"
+                    v-model="credentials.confirmPassword">
+          </md-input>
+        </md-input-container>
       </md-content>
 
       <md-content>
-        <md-button class="md-accent" @click="submit()">Login</md-button>
+        <md-button class="md-accent" @click="submit()">Sign UP</md-button>
       </md-content>
 
       <div class="padded">
-        Already a user? Login here.
+        Not a user yet? Sign Up here.
       </div>
 
     </md-whiteframe>
@@ -36,12 +43,13 @@
 <script>
 import auth from '../api/user'
 export default {
-  name: 'login',
+  name: 'signup',
   data () {
     return {
       credentials: {
         username: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
       }
     }
   },
@@ -49,13 +57,13 @@ export default {
     submit () {
       var user = {
         username: this.credentials.username,
-        password: this.credentials.password
+        password: this.credentials.password,
+        confirmPassword: this.credentials.confirmPassword
       }
-      auth.loginUser(user, this)
+      auth.signup(user, this)
     }
   }
 }
-
 </script>
 
 <style scoped lang="stylus">
@@ -63,17 +71,17 @@ export default {
 .md-accent
   background-color: accent-yellow
   color: #fff
-.login-container
+.signup-container
   color: primary-text-color
   background-color: #fff
   padding: 20px
 @media(min-width: 501px)
-  .login-container
+  .signup-container
     width: 400px
     text-align: center
     margin: 100px auto
 @media(max-width: 500px)
-  .login-container
+  .signup-container
     width: 100%
     text-align: center
     margin: 20px auto
