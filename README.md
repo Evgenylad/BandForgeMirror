@@ -58,4 +58,24 @@ Branch names should only contain lower case letters and numbers separated by `-`
 
 If you find a bug or have a feature request, create an issue in Waffle (you can also do this through Github) and the issue will be dealt with and assigned accordingly. 
 
+# Building for Production 
 
+We use Docker to build for production. 
+
+We're currently building off of the `kyma/docker-nginx` image. 
+
+You can find documentation for this image at [here](https://github.com/KyleAMathews/docker-nginx)
+
+
+```
+# Build the app for production 
+$ npm run build 
+
+# Build a docker image
+docker build -t hivemindapps/bandforge-vue-nginx:latest .
+
+# Run the image to test and make sure everything works locally 
+$ docker run -p 80:80 -d hivemindapps/bandforge-vue-nginx
+
+# Point your browser to localhost and you should see the app pull up.
+```
