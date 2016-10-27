@@ -2,12 +2,29 @@
 
   <div class="navbar" id="navbar">
     <md-toolbar class="navbar__toolbar" v-md-theme="'default'">
-      <md-button class="md-icon-button navbar__btn navbar__btn--burger" @click="toggleLeftSidenav()">
-        <md-icon class="navbar__icon navbar__icon--burger">menu</md-icon>
-      </md-button>
+      <div class="navbar__btnBlock">
+        <div class="navbar__activeBand">Active Band</div>
+        <div class="navbar__bandTitle">
+          <h1 class="navbar__bandName">Some Band</h1>
+          <md-button class="md-icon-button navbar__btn navbar__btn--tick" @click="toggleLeftSidenav()">
+            <md-icon>arrow_drop_down</md-icon>
+          </md-button>
+        </div>
+      </div>
+      <div class="navbar__menu">
+        <md-button class="navbar__btn navbar__btn--btnMenu waves-effect waves-light"
+                   @click="showLoginPopup">Login
+        </md-button>
 
-      <h2 class="navbar__title md-title">BandForge</h2>
+        <md-button class="navbar__btn navbar__btn--btnMenu waves-effect waves-light"
+                   @click="showSignUpPopup">Sign Up
+        </md-button>
 
+        <h2 class="navbar__title md-title">BandForge</h2>
+      </div>
+      <div class="navbar__userBlock">
+
+      </div>
     </md-toolbar>
 
   </div>

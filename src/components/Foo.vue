@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer" id="testing">
+  <footer class="footer" id="footer">
     <div class="footer__copyright">
       @Copyright BandForge {{ new Date().getFullYear() }}
     </div>

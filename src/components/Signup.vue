@@ -1,36 +1,34 @@
 <template>
   <div class="signup">
 
-    <md-whiteframe class="signup-container">
-      <h1>Sign Up</h1>
-      <md-content class="signupbox">
-        <md-input-container>
-          <!-- <label>Username</label> -->
-          <md-input placeholder="Username"
+    <md-whiteframe class="signup__container">
+
+      <md-content class="signup__box">
+        <md-input-container class="signup__inputBlock">
+          <label class="signup__label" for="signup__username">Username</label>
+          <md-input class="signup__input" id="signup__username"
                     v-model="credentials.username">
           </md-input>
         </md-input-container>
 
-        <md-input-container>
-          <!-- <label>Password</label> -->
-          <md-input placeholder="Password"
+        <md-input-container class="signup__inputBlock">
+          <label class="signup__label" for="signup__pass">Password</label>
+          <md-input class="signup__input" id="signup__pass"
                     v-model="credentials.password">
           </md-input>
         </md-input-container>
 
-        <md-input-container>
-          <!-- <label>Password</label> -->
-          <md-input placeholder="Confirm Password"
+        <md-input-container class="signup__inputBlock">
+          <label class="signup__label" for="signup__conf_pass">Confirm Password</label>
+          <md-input class="signup__input" id="signup__conf_pass"
                     v-model="credentials.confirmPassword">
           </md-input>
         </md-input-container>
       </md-content>
 
-      <md-content>
-        <md-button class="md-accent" @click="submit()">Sign UP</md-button>
-      </md-content>
+      <md-button class="signup__btn " @click="submit()">Sign UP</md-button>
 
-      <div class="padded">
+      <div class="signup__welcomeText">
         Not a user yet? Sign Up here.
       </div>
 
@@ -68,21 +66,6 @@ export default {
 
 <style scoped lang="stylus">
 @import '../styles/colors'
-.md-accent
-  background-color: accent-yellow
-  color: #fff
-.signup-container
-  color: primary-text-color
-  background-color: #fff
-  padding: 20px
-@media(min-width: 501px)
-  .signup-container
-    width: 400px
-    text-align: center
-    margin: 100px auto
-@media(max-width: 500px)
-  .signup-container
-    width: 100%
-    text-align: center
-    margin: 20px auto
+@import '../styles/signup'
+
 </style>

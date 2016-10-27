@@ -1,9 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" class="app">
     <navbar></navbar>
-    <login v-if="this.$store.state.loginPopupVisible == true"></login>
-    <signup v-if="this.$store.state.signUpPopupVisible == true"></signup>
-    <sidebar></sidebar>
+    <h1 class="app__header">sign up for the best diy band management platform</h1>
+    <signup></signup>
+
     <foo></foo>
     <router-view></router-view>
   </div>
@@ -35,8 +35,8 @@ export default {
 @import '../node_modules/vue-material/dist/vue-material.css'
 @import './styles/colors'
 @import './styles/grid'
+@import '../styles/app'
 
-#app
 
 body
   background-color: main-background
