@@ -1,5 +1,7 @@
 @import '../styles/colors'
 .navbar
+  display: block;
+  width: 100%;
   &__toolbar
    padding: 0;
    height: 64px !important;
@@ -35,3 +37,14 @@
   &__icon
    &--burger
     color: secondary-text-color;
+
+  &__userBlock
+   cursor: pointer;
+   &:after
+    content: '\2807';
+    position: absolute;
+    right: 26px;
+    top: 50%;
+    font-size: 26px;
+    color: #ffffff;
+    transform: translateY(-50%);

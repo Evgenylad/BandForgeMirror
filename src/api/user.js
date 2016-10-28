@@ -1,6 +1,11 @@
 import { API_URL } from '../../config/constants'
 
 export default {
+  // User object will let us check authentication status
+  user: {
+    authenticated: false
+  },
+
   getUser () {
     this.$http.get(API_URL + '/user')
     .then((user) => {
@@ -17,6 +22,8 @@ export default {
     .then((user) => {
       console.log('User logged in')
       console.log(user)
+      this.user.authenticated = true
+      console.log('ifsuccess: ' + this.user.authenticated)
     })
     .catch((err) => {
       console.log('Error logging in user: ', err)
@@ -28,6 +35,8 @@ export default {
     .then((user) => {
       console.log('User logged in')
       console.log(user)
+      this.user.authenticated = true
+      console.log('ifsuccess: ' + this.user.authenticated)
     })
     .catch((err) => {
       console.log(user)

@@ -1,9 +1,9 @@
 <template>
-  <div class="signup">
+  <div class="signup" v-if="this.$store.state.signUpPopupVisible, !user.authenticated">
 
     <md-whiteframe class="signup__container">
 
-      <md-content class="signup__box">
+      <div class="signup__box">
         <md-input-container class="signup__inputBlock">
           <label class="signup__label" for="signup__username">Username</label>
           <md-input class="signup__input" id="signup__username"
@@ -24,7 +24,7 @@
                     v-model="credentials.confirmPassword">
           </md-input>
         </md-input-container>
-      </md-content>
+      </div>
 
       <md-button class="signup__btn " @click="submit()">Sign UP</md-button>
 
@@ -48,7 +48,8 @@ export default {
         username: '',
         password: '',
         confirmPassword: ''
-      }
+      },
+      user: auth.user
     }
   },
   methods: {
