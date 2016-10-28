@@ -1,27 +1,32 @@
 <template>
-  <div id="app">
+  <div id="app" class="app">
     <navbar></navbar>
-    <sidebar></sidebar>
+    <h1 class="app__header">sign up for the best diy band management platform</h1>
+    <signup></signup>
+
+    <foo></foo>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
 import Login from './components/Login'
+import Signup from './components/Signup'
 import Navbar from './components/Navbar'
-import Dashboard from './components/Dashboard'
-import Shows from './components/Shows'
+import Foo from './components/Foo'
 import Sidebar from './components/Sidebar'
+import store from './vuex/store'
 
 export default {
   name: 'app',
   components: {
     Login,
-    Dashboard,
-    Shows,
+    Signup,
     Navbar,
+    Foo,
     Sidebar
-  }
+  },
+  store
 }
 </script>
 
@@ -30,11 +35,11 @@ export default {
 @import '../node_modules/vue-material/dist/vue-material.css'
 @import './styles/colors'
 @import './styles/grid'
+@import '../styles/app'
 
-#app
 
 body
-  background-color: dark-background
+  background-color: main-background
   font-family: 'Roboto', Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale

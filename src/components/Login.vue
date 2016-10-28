@@ -1,26 +1,28 @@
 <template>
-  <div>
+  <div class="login">
 
-    <md-whiteframe class="login-container">
+    <md-whiteframe class="login__container">
       <h1>Login</h1>
-      <md-content class="loginbox">
-        <md-input-container>
-          <!-- <label>Username</label> -->
-          <md-input placeholder="Username"></md-input>
+      <md-content class="login__box">
+        <md-input-container class="login__inputBlock">
+          <label class="login__label" for="login__username">Username</label>
+          <md-input class="login__input" id="login__username"
+                    v-model="credentials.username">
+          </md-input>
         </md-input-container>
 
-        <md-input-container>
-          <!-- <label>Password</label> -->
-          <md-input placeholder="Password"></md-input>
+        <md-input-container class="login__inputBlock">
+          <label class="login__label" for="login__pass">Password</label>
+          <md-input class="login__input" id="login__pass"
+                    v-model="credentials.password">
+          </md-input>
         </md-input-container>
       </md-content>
 
-      <md-content>
-        <md-button class="md-accent">Login</md-button>
-      </md-content>
+      <md-button class="login__btn " @click="submit()">login</md-button>
 
-      <div class="padded">
-        Already a user? Login here.
+      <div class="login__welcomeText">
+        Not a user yet? Sign Up here.
       </div>
 
     </md-whiteframe>
@@ -30,25 +32,31 @@
 </template>
 
 <script>
+import auth from '../api/user'
+export default {
+  name: 'login',
+  data () {
+    return {
+      credentials: {
+        username: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    submit () {
+      var user = {
+        username: this.credentials.username,
+        password: this.credentials.password
+      }
+      auth.loginUser(user, this)
+    }
+  }
+}
+
 </script>
 
 <style scoped lang="stylus">
 @import '../styles/colors'
-.md-accent
-  background-color: accent-yellow
-  color: #fff
-.login-container
-  color: primary-text-color
-  background-color: #fff
-  padding: 20px
-@media(min-width: 501px)
-  .login-container
-    width: 400px
-    text-align: center
-    margin: 100px auto
-@media(max-width: 500px)
-  .login-container
-    width: 100%
-    text-align: center
-    margin: 20px auto
+
 </style>
