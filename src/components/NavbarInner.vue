@@ -1,29 +1,34 @@
 <template>
-
-  <div class="navbar" id="navbar">
-    <md-toolbar class="navbar__toolbar" v-md-theme="'default'">
-      <div class="navbar__btnBlock">
-        <div class="navbar__activeBand">Active Band</div>
-        <div class="navbar__bandTitle">
-          <h1 class="navbar__bandName">Some Band</h1>
-          <md-button class="md-icon-button navbar__btn navbar__btn--tick" @click="toggleLeftSidenav()">
+  <div class="navbarInner" id="navbar-inner" v-if="user.authenticated">
+    <md-toolbar class="navbarInner__toolbar" v-md-theme="'default'">
+      <div class="navbarInner__activeBand">
+        <div class="navbarInner__userStatus">Active Band</div>
+        <div class="navbarInner__userTitle">
+          <h1 class="navbarInner__userName">Some Band</h1>
+          <md-button class="md-icon-button navbarInner__btn navbarInner__btn--tick" @click="toggleLeftSidenav()">
             <md-icon>arrow_drop_down</md-icon>
           </md-button>
         </div>
       </div>
-      <div class="navbar__menu">
-        <md-button class="navbar__btn navbar__btn--btnMenu waves-effect waves-light"
+<!--      <div class="navbarInner__menu">-->
+      <!--  <md-button class="navbarInner__btn navbarInner__btn--btnMenu waves-effect waves-light"
                    @click="showLoginPopup">Login
         </md-button>
 
-        <md-button class="navbar__btn navbar__btn--btnMenu waves-effect waves-light"
+        <md-button class="navbarInner__btn navbarInner__btn--btnMenu waves-effect waves-light"
                    @click="showSignUpPopup">Sign Up
+        </md-button>-->
+
+        <h2 class="navbarInner__title md-title">BandForge</h2>
+<!--      </div>-->
+      <div class="navbarInner__userBlock">
+        <md-button class="md-icon-button navbarInner__btn navbarInner__btn--find" @click="toggleLeftSidenav()">
+          <md-icon>search</md-icon>
         </md-button>
 
-        <h2 class="navbar__title md-title">BandForge</h2>
-      </div>
-      <div class="navbar__userBlock">
+        <div class="navbarInner__userMenu">
 
+        </div>
       </div>
     </md-toolbar>
 
@@ -32,8 +37,14 @@
 </template>
 
 <script>
+import auth from '../api/user'
 export default {
-  name: 'navbar',
+  name: 'navbarInner',
+  data () {
+    return {
+      user: auth.user
+    }
+  },
   computed: {
     loginPopupVisible () {
       return this.$store.state.loginPopupVisible
@@ -72,7 +83,7 @@ export default {
 
 <style media="screen" lang="stylus">
 @import '../styles/colors'
-@import '../styles/navbar'
+@import '../styles/navbarInner'
 
 .md-toolbar
   background-color: secondary-background !important

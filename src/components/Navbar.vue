@@ -1,6 +1,6 @@
 <template>
 
-  <div class="navbar" id="navbar">
+  <div class="navbar" id="navbar" v-if="!user.authenticated">
     <md-toolbar class="navbar__toolbar" v-md-theme="'default'">
       <md-button class="md-icon-button navbar__btn navbar__btn--burger" @click="toggleLeftSidenav()">
         <md-icon class="navbar__icon navbar__icon--burger">menu</md-icon>
@@ -8,6 +8,7 @@
 
       <h2 class="navbar__title md-title">BandForge</h2>
 
+      <div class="navbar__userBlock"></div>
     </md-toolbar>
 
   </div>
@@ -15,7 +16,13 @@
 </template>
 
 <script>
+import auth from '../api/user'
 export default {
+  data () {
+    return {
+      user: auth.user
+    }
+  },
   name: 'navbar',
   computed: {
     loginPopupVisible () {

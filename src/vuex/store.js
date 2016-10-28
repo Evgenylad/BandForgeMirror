@@ -6,7 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     loginPopupVisible: true,
-    signUpPopupVisible: false
+    signUpPopupVisible: true
   },
   mutations: {
     showLoginPopup: state => {

@@ -1,0 +1,80 @@
+@import '../styles/colors'
+@media(min-width: 768px)
+ .navbarInner
+  display: block;
+  width: 100%;
+
+  &__toolbar
+   display: flex;
+   justify-content: space-between;
+   padding: 0;
+   height: 64px !important;
+
+  &__activeBand
+   box-sizing: border-box;
+   width: calc(256px/1920px);
+   min-width: 256px;
+   height: 64px;
+   padding-left: 22px;
+   padding-top: 10px;
+   padding-bottom: 16px;
+   background: green-background;
+   box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.20), 0px 1px 5px 0px rgba(0,0,0,0.13);
+
+  &__userTitle
+   position: relative;
+   display: flex;
+   align-items: center;
+   height: 22px;
+
+  &__userName
+   margin: 0;
+   font-family: Roboto-Regular;
+   font-size: 20px;
+   color: #060D14;
+   letter-spacing: 0px;
+
+  &__userStatus
+   font-family: Roboto-Light;
+   font-size: 9px;
+   color: #060D14;
+   letter-spacing: 0px;
+
+  &__btn
+   &--tick
+    position: absolute;
+    right: 0;
+    color: #000000;
+
+  &__title
+   align-self: center;
+   width: 40px;
+   height: 64px;
+   margin: 0;
+   padding: 0;
+   color: #ffffff;
+   font-size: 10px !important;
+   font-family: Roboto-Regular;
+   letter-spacing: 0px;
+   text-transform: uppercase;
+
+  &__userBlock
+   display: flex;
+   width: 144px;
+   cursor: pointer;
+
+  &__btn
+   &--find
+    width: 72px;
+    margin-left: 35px !important;
+
+  &__userMenu
+   width: 72px;
+   &:after
+    content: '\2807';
+    position: absolute;
+    right: 26px;
+    top: 50%;
+    font-size: 26px;
+    color: #ffffff;
+    transform: translateY(-50%);

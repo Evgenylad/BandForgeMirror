@@ -1,5 +1,5 @@
 <template>
-  <md-sidenav class="navbar__dropDown md-left" ref="leftSidenav" @click="open('Left')" @close="close('Left')">
+  <md-sidenav class="navbar__dropDown md-left" @click="open('Left')" @close="close('Left')">
     <md-list>
       <md-list-item>
         <md-icon>dashboard</md-icon> <span class="navbar__listItemName">Dashboard</span>

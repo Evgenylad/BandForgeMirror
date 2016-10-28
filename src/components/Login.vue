@@ -1,9 +1,8 @@
 <template>
-  <div class="login">
+  <div class="login" v-if="this.$store.state.loginPopupVisible, !user.authenticated">
 
     <md-whiteframe class="login__container">
-      <h1>Login</h1>
-      <md-content class="login__box">
+      <div class="login__box">
         <md-input-container class="login__inputBlock">
           <label class="login__label" for="login__username">Username</label>
           <md-input class="login__input" id="login__username"
@@ -17,7 +16,7 @@
                     v-model="credentials.password">
           </md-input>
         </md-input-container>
-      </md-content>
+      </div>
 
       <md-button class="login__btn " @click="submit()">login</md-button>
 
@@ -40,7 +39,8 @@ export default {
       credentials: {
         username: '',
         password: ''
-      }
+      },
+      user: auth.user
     }
   },
   methods: {
@@ -58,5 +58,6 @@ export default {
 
 <style scoped lang="stylus">
 @import '../styles/colors'
+@import '../styles/login'
 
 </style>
