@@ -8,7 +8,8 @@ export default new Vuex.Store({
     loginPopupVisible: false,
     signUpPopupVisible: true,
     onBoardingPopupVisible: false,
-    addMemberPopupVisible: false
+    addMemberPopupVisible: false,
+    currentView: 'Signup'
   },
   mutations: {
     showLoginPopup: state => {
@@ -34,7 +35,8 @@ export default new Vuex.Store({
       return {
         state: {
           signUpPopupVisible: state.signUpPopupVisible,
-          loginPopupVisible: state.loginPopupVisible}
+          loginPopupVisible: state.loginPopupVisible
+        }
       }
     },
     showOnBoardingPopup: state => {
@@ -60,6 +62,9 @@ export default new Vuex.Store({
           onBoardingPopupVisible: state.onBoardingPopupVisible,
           addMemberPopupVisible: state.addMemberPopupVisible}
       }
+    },
+    changeCurrentModal: (state, currentView) => {
+      state.currentView = currentView
     }
   }
 })

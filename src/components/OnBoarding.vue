@@ -1,5 +1,5 @@
 <template>
-  <div class="onBoarding" v-if="user.authenticated && !band.added">
+  <div class="onBoarding">
 
     <md-whiteframe class="onBoarding__container">
 
@@ -26,7 +26,7 @@
         </md-input-container>
       </div>
 
-      <md-button class="onBoarding__btn " @click="submit()">Okay, let's go</md-button>
+      <md-button class="onBoarding__btn " @click="submit(), changeCurrentModal('AddMember')">Okay, let's go</md-button>
     </md-whiteframe>
 
 
@@ -51,16 +51,25 @@ export default {
   computed: {
     addMemberPopupVisible () {
       return this.$store.state.addMemberPopupVisible
+    },
+    currentView () {
+      return this.$store.state.currentView
     }
   },
   methods: {
     submit () {
+      let localStorage = window.localStorage
+      localStorage.setItem('bandName', this.credentials.bandName)
+      console.log(window.localStorage)
       var band = {
         bandName: this.credentials.bandName,
         bandSocialUrl: this.credentials.bandSocialUrl,
         phone: this.credentials.phone
       }
       auth.createNewBand(band, this)
+    },
+    changeCurrentModal (curentView) {
+      this.$store.commit('changeCurrentModal', curentView)
     }
   }
 }

@@ -2,7 +2,7 @@
 
   <div class="navbar" id="navbar" v-if="!member.added">
     <md-toolbar class="navbar__toolbar" v-md-theme="'default'">
-      <md-button class="md-icon-button navbar__btn navbar__btn--burger" @click="toggleLeftSidenav()">
+      <md-button class="md-icon-button navbar__btn navbar__btn--burger">
         <md-icon class="navbar__icon navbar__icon--burger">menu</md-icon>
       </md-button>
 
@@ -10,12 +10,12 @@
 
       <div class="navbar__userBlock" v-if="!user.authenticated">
         <md-button class="navbar__link"
-                   @click="showSignUpPopup">
+                   @click="changeCurrentModal('Signup')">
           Sign Up
         </md-button>
 
         <md-button class="navbar__link"
-                   @click="showLoginPopup">
+                   @click="changeCurrentModal('Login')">
           Login
         </md-button>
       </div>
@@ -42,24 +42,12 @@ export default {
     },
     signUpPopupVisible () {
       return this.$store.state.signUpPopupVisible
+    },
+    currentView () {
+      return this.$store.state.currentView
     }
   },
   methods: {
-    toggleLeftSidenav: function (event) {
-      this.$refs.leftSidenav.toggle()
-    },
-    toggleRightSidenav: function (event) {
-      this.$refs.rightSidenav.toggle()
-    },
-    closeRightSidenav: function (event) {
-      this.$refs.rightSidenav.close()
-    },
-    open: function (ref) {
-      console.log('Opened: ' + ref)
-    },
-    close: function (ref) {
-      console.log('Closed: ' + ref)
-    },
     showLoginPopup () {
       console.log(this.$store.state.loginPopupVisible)
       this.$store.commit('showLoginPopup')
@@ -67,6 +55,9 @@ export default {
     showSignUpPopup () {
       console.log(this.$store.state.signUpPopupVisible)
       this.$store.commit('showSignUpPopup')
+    },
+    changeCurrentModal (curentView) {
+      this.$store.commit('changeCurrentModal', curentView)
     }
   }
 }

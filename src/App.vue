@@ -9,11 +9,14 @@
           v-show="user.authenticated && !band.added">We need a few things from you first.</h1>
       <h1 class="app__header"
           v-show="user.authenticated && band.added & !member.added">Let's invite your band mates.</h1>
-      <signup></signup>
-      <login></login>
+
+      <transition name="modal" mode="out-in">
+        <component v-bind:is="this.$store.state.currentView"></component>
+      </transition>
+
       <sidebar></sidebar>
-      <onBoarding></onBoarding>
       <addMember></addMember>
+
     </div>
     <foo></foo>
     <router-view></router-view>
@@ -71,4 +74,11 @@ body
   -moz-osx-font-smoothing: grayscale
   color: #fff
   font-size: 16px
+
+.modal-enter-active, .modal-leave-active {
+  transition: opacity .5s ease;
+}
+.modal-enter, .modal-leave-active {
+  opacity: 0;
+}
 </style>
