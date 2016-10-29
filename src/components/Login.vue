@@ -1,5 +1,5 @@
 <template>
-  <div class="login" v-if="this.$store.state.loginPopupVisible, !user.authenticated">
+  <div class="login">
 
     <md-whiteframe class="login__container">
       <div class="login__box">

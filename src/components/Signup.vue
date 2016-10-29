@@ -1,5 +1,5 @@
 <template>
-  <div class="signup" v-if="this.$store.state.signUpPopupVisible, !user.authenticated">
+  <div class="signup">
 
     <md-whiteframe class="signup__container">
 
@@ -26,7 +26,7 @@
         </md-input-container>
       </div>
 
-      <md-button class="signup__btn " @click="submit()">Sign UP</md-button>
+      <md-button class="signup__btn " @click="submit(), changeCurrentModal('OnBoarding')">Sign UP</md-button>
 
       <div class="signup__welcomeText">
         Not a user yet? Sign Up here.
@@ -52,6 +52,14 @@ export default {
       user: auth.user
     }
   },
+  computed: {
+    signUpPopupVisible () {
+      return this.$store.state.signUpPopupVisible
+    },
+    onBoardingPopupVisible () {
+      return this.$store.state.onBoardingPopupVisible
+    }
+  },
   methods: {
     submit () {
       var user = {
@@ -60,6 +68,9 @@ export default {
         confirmPassword: this.credentials.confirmPassword
       }
       auth.signup(user, this)
+    },
+    changeCurrentModal (curentView) {
+      this.$store.commit('changeCurrentModal', curentView)
     }
   }
 }

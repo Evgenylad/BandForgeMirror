@@ -1,5 +1,5 @@
 <template>
-  <div class="navbarInner" id="navbar-inner" v-if="user.authenticated">
+  <div class="navbarInner" id="navbar-inner" v-if="member.added">
     <md-toolbar class="navbarInner__toolbar" v-md-theme="'default'">
       <div class="navbarInner__activeBand">
         <div class="navbarInner__userStatus">Active Band</div>
@@ -42,7 +42,8 @@ export default {
   name: 'navbarInner',
   data () {
     return {
-      user: auth.user
+      user: auth.user,
+      member: auth.member
     }
   },
   computed: {
@@ -90,20 +91,17 @@ export default {
   /*color: #51da62*/
   color: #fff
   font-family: 'Roboto'
+
+.md-sidenav .md-backdrop
+ display: none;
+
+.md-sidenav .md-sidenav-content
+ pointer-events: visible;
+
 .md-sidenav-content
-  background-color: secondary-background !important
-  width: 257px !important
-  top: 64px !important
-.md-toolbar-container
-  margin: 10px 0px
-.md-button .md-button .md-list-item-container
-  paddind: 0 10px;
-.md-list-item:hover > .md-list-item .md-icon
-  color: #21ce99
-.md-list-item .md-list-item-holder > .md-icon:first-child
-  margin-right: 10px
+  width: 256px !important;
+  top: 64px !important;
+
 .md-list-item .md-list-item-container
-  padding: 0 10px !important
-.md-list-item .md-icon
-  color: text-color
+  padding: 0 10px !important;
 </style>

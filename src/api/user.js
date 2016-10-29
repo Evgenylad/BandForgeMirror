@@ -6,6 +6,14 @@ export default {
     authenticated: false
   },
 
+  band: {
+    added: false
+  },
+
+  member: {
+    added: false
+  },
+
   getUser () {
     this.$http.get(API_URL + '/user')
     .then((user) => {
@@ -40,6 +48,20 @@ export default {
     })
     .catch((err) => {
       console.log(user)
+      console.log('Error logging in user: ', err)
+    })
+  },
+
+  createNewBand (band, context) {
+    context.$http.post(API_URL + '/band/createNewBand', band)
+    .then((user) => {
+      console.log('User logged in')
+      console.log(band)
+      this.band.added = true
+      console.log('ifsuccess: ' + this.user.authenticated)
+    })
+    .catch((err) => {
+      console.log(band)
       console.log('Error logging in user: ', err)
     })
   },

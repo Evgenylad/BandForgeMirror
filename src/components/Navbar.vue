@@ -1,14 +1,24 @@
 <template>
 
-  <div class="navbar" id="navbar" v-if="!user.authenticated">
+  <div class="navbar" id="navbar" v-if="!member.added">
     <md-toolbar class="navbar__toolbar" v-md-theme="'default'">
-      <md-button class="md-icon-button navbar__btn navbar__btn--burger" @click="toggleLeftSidenav()">
+      <md-button class="md-icon-button navbar__btn navbar__btn--burger">
         <md-icon class="navbar__icon navbar__icon--burger">menu</md-icon>
       </md-button>
 
       <h2 class="navbar__title md-title">BandForge</h2>
 
-      <div class="navbar__userBlock"></div>
+      <div class="navbar__userBlock" v-if="!user.authenticated">
+        <md-button class="navbar__link"
+                   @click="changeCurrentModal('Signup')">
+          Sign Up
+        </md-button>
+
+        <md-button class="navbar__link"
+                   @click="changeCurrentModal('Login')">
+          Login
+        </md-button>
+      </div>
     </md-toolbar>
 
   </div>
@@ -20,7 +30,9 @@ import auth from '../api/user'
 export default {
   data () {
     return {
-      user: auth.user
+      user: auth.user,
+      band: auth.band,
+      member: auth.member
     }
   },
   name: 'navbar',
@@ -30,24 +42,12 @@ export default {
     },
     signUpPopupVisible () {
       return this.$store.state.signUpPopupVisible
+    },
+    currentView () {
+      return this.$store.state.currentView
     }
   },
   methods: {
-    toggleLeftSidenav: function (event) {
-      this.$refs.leftSidenav.toggle()
-    },
-    toggleRightSidenav: function (event) {
-      this.$refs.rightSidenav.toggle()
-    },
-    closeRightSidenav: function (event) {
-      this.$refs.rightSidenav.close()
-    },
-    open: function (ref) {
-      console.log('Opened: ' + ref)
-    },
-    close: function (ref) {
-      console.log('Closed: ' + ref)
-    },
     showLoginPopup () {
       console.log(this.$store.state.loginPopupVisible)
       this.$store.commit('showLoginPopup')
@@ -55,6 +55,9 @@ export default {
     showSignUpPopup () {
       console.log(this.$store.state.signUpPopupVisible)
       this.$store.commit('showSignUpPopup')
+    },
+    changeCurrentModal (curentView) {
+      this.$store.commit('changeCurrentModal', curentView)
     }
   }
 }
@@ -69,20 +72,4 @@ export default {
   /*color: #51da62*/
   color: #fff
   font-family: 'Roboto'
-.md-sidenav-content
-  background-color: secondary-background !important
-  width: 257px !important
-  top: 64px !important
-.md-toolbar-container
-  margin: 10px 0px
-.md-button .md-button .md-list-item-container
-  paddind: 0 10px;
-.md-list-item:hover > .md-list-item .md-icon
-  color: #21ce99
-.md-list-item .md-list-item-holder > .md-icon:first-child
-  margin-right: 10px
-.md-list-item .md-list-item-container
-  padding: 0 10px !important
-.md-list-item .md-icon
-  color: text-color
 </style>
