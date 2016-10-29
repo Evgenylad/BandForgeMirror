@@ -5,25 +5,61 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    loginPopupVisible: true,
-    signUpPopupVisible: true
+    loginPopupVisible: false,
+    signUpPopupVisible: true,
+    onBoardingPopupVisible: false,
+    addMemberPopupVisible: false
   },
   mutations: {
     showLoginPopup: state => {
       if (state.loginPopupVisible) {
-        state.loginPopupVisible = false
+        state.loginPopupVisible = true
       } else {
         state.loginPopupVisible = true
+        state.signUpPopupVisible = false
       }
-      return state.loginPopupVisible
+      return {
+        state: {
+          signUpPopupVisible: state.signUpPopupVisible,
+          loginPopupVisible: state.loginPopupVisible}
+      }
     },
     showSignUpPopup: state => {
       if (state.signUpPopupVisible) {
-        state.signUpPopupVisible = false
+        state.signUpPopupVisible = true
       } else {
         state.signUpPopupVisible = true
+        state.loginPopupVisible = false
       }
-      return state.signUpPopupVisible
+      return {
+        state: {
+          signUpPopupVisible: state.signUpPopupVisible,
+          loginPopupVisible: state.loginPopupVisible}
+      }
+    },
+    showOnBoardingPopup: state => {
+      if (state.signUpPopupVisible) {
+        state.onBoardingPopupVisible = true
+        state.signUpPopupVisible = false
+      }
+      return {
+        state: {
+          onBoardingPopupVisible: state.onBoardingPopupVisible,
+          addMemberPopupVisible: state.signUpPopupVisible}
+      }
+    },
+    showAddMemberPopup: state => {
+      if (state.onBoardingPopupVisible) {
+        state.onBoardingPopupVisible = false
+        state.addMemberPopupVisible = true
+      } else {
+        state.addMemberPopupVisible = false
+      }
+      return {
+        state: {
+          onBoardingPopupVisible: state.onBoardingPopupVisible,
+          addMemberPopupVisible: state.addMemberPopupVisible}
+      }
     }
   }
 })

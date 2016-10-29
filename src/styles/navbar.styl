@@ -34,17 +34,24 @@
      margin: 0 !important;
      transform: translateY(-50%);
 
-  &__icon
-   &--burger
-    color: secondary-text-color;
-
   &__userBlock
-   cursor: pointer;
-   &:after
-    content: '\2807';
-    position: absolute;
-    right: 26px;
-    top: 50%;
-    font-size: 26px;
-    color: #ffffff;
-    transform: translateY(-50%);
+   position: absolute; 
+   right: 0;
+   top: 50%;
+   display: flex;
+   width: 200px;
+   margin-right: 16px;
+   transform: translateY(-50%);
+
+  &__link
+   width: 100px;
+   font-family: Roboto-Medium;
+   font-size: 14px;
+   color: #21CE99;
+   letter-spacing: -0.03px;
+
+@media(max-width: 768px)
+  .navbar
+    &__icon
+     &--burger
+      color: secondary-text-color;

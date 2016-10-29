@@ -1,12 +1,19 @@
 <template>
   <div id="app" class="app">
-    <div class="app__content">
+    <div :class="{ app__content: member.added, app__contentLP: !member.added }">
       <navbar></navbar>
       <navbarInner></navbarInner>
       <h1 class="app__header"
-          v-show="!user.authenticated">sign up for the best diy band management platform</h1>
+          v-show="!user.authenticated">sign up for the best diy band management platform.</h1>
+      <h1 class="app__header"
+          v-show="user.authenticated && !band.added">We need a few things from you first.</h1>
+      <h1 class="app__header"
+          v-show="user.authenticated && band.added & !member.added">Let's invite your band mates.</h1>
       <signup></signup>
       <login></login>
+      <sidebar></sidebar>
+      <onBoarding></onBoarding>
+      <addMember></addMember>
     </div>
     <foo></foo>
     <router-view></router-view>
@@ -16,6 +23,8 @@
 <script>
 import Login from './components/Login'
 import Signup from './components/Signup'
+import OnBoarding from './components/OnBoarding'
+import AddMember from './components/AddMember'
 import Navbar from './components/Navbar'
 import NavbarInner from './components/NavbarInner'
 import Foo from './components/Foo'
@@ -27,12 +36,16 @@ export default {
   name: 'app',
   data () {
     return {
-      user: auth.user
+      user: auth.user,
+      band: auth.band,
+      member: auth.member
     }
   },
   components: {
     Login,
     Signup,
+    OnBoarding,
+    AddMember,
     Navbar,
     NavbarInner,
     Foo,
