@@ -30,7 +30,7 @@
       </md-list-item>
 
       <md-list-item class="sidebar__item">
-        <md-icon class="sidebar__icon">assistant_photo</md-icon> <span class="sidebar__listItemName">Updates</span>
+        <md-icon class="sidebar__icon">log_out</md-icon> <span class="sidebar__listItemName">Updates</span>
       </md-list-item>
     </md-list>
 
@@ -38,7 +38,7 @@
       <div class="sidebar__userEmail">user@example.com</div>
 
       <md-list-item class="sidebar__item">
-        <md-icon class="sidebar__icon">assistant_photo</md-icon> <span class="sidebar__listItemName">Account</span>
+        <md-icon class="sidebar__icon">flag</md-icon> <span class="sidebar__listItemName">Account</span>
       </md-list-item>
 
       <md-list-item class="sidebar__item">

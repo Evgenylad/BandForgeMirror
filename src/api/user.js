@@ -26,12 +26,16 @@ export default {
 
   loginUser (user, context) {
     console.log(this)
+    let localStorage = window.localStorage
     context.$http.post(API_URL + '/user/login', user)
     .then((user) => {
       console.log('User logged in')
-      console.log(user)
+
+      localStorage.setItem('token', user.body.token)
       this.user.authenticated = true
-      console.log('ifsuccess: ' + this.user.authenticated)
+      this.band.added = true
+      this.member.added = true
+      this.member.added = true
     })
     .catch((err) => {
       console.log('Error logging in user: ', err)
@@ -42,7 +46,7 @@ export default {
     context.$http.post(API_URL + '/user/signup', user)
     .then((user) => {
       console.log('User logged in')
-      console.log(user)
+      console.log(user.status)
       this.user.authenticated = true
       console.log('ifsuccess: ' + this.user.authenticated)
     })
@@ -53,7 +57,7 @@ export default {
   },
 
   createNewBand (band, context) {
-    context.$http.post(API_URL + '/band/createNewBand', band)
+    context.$http.post(API_URL + '/api/band/createNewBand', band)
     .then((user) => {
       console.log('User logged in')
       console.log(band)
@@ -62,7 +66,7 @@ export default {
     })
     .catch((err) => {
       console.log(band)
-      console.log('Error logging in user: ', err)
+      console.log('Band did NOT added: ', err)
     })
   },
 

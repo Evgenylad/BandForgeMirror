@@ -11,7 +11,7 @@
           v-show="user.authenticated && band.added & !member.added">Let's invite your band mates.</h1>
 
       <transition name="modal" mode="out-in">
-        <component v-bind:is="this.$store.state.currentView"></component>
+        <component v-bind:is="this.$store.state.currentView"></component> // Dynamic component for SignUp, OnBoarding, AddMember components
       </transition>
 
       <sidebar></sidebar>

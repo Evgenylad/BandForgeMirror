@@ -4,7 +4,7 @@
   z-index: 1;
   &__container
    width: 540px;
-   height: 425px;
+   min-height: 425px;
    background: #393c42;
    border: 1px solid rgba(150,150,150,0.11);
    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.20);
@@ -20,6 +20,7 @@
    height: 60px;
    margin: 0;
    margin-top: 38px;
+   margin-bottom: 29px;
    padding: 0;
    font-family: Roboto-Regular;
    font-size: 16px;
@@ -40,15 +41,42 @@
      border-bottom: 1px solid input-focus;
 
   &__btn
-   margin-top: 59px;
    background: #21ce99;
-   box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.16), 0px 2px 5px 0px rgba(0,0,0,0.26);
-   border-radius: 3px;
    font-family: Roboto-Medium;
    font-size: 14px;
    color: #fafafa;
    letter-spacing: -0.03px;
    text-transform: none;
+
+   &--submit
+    margin-bottom: 56px;
+    box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.16), 0px 2px 5px 0px rgba(0,0,0,0.26);
+    border-radius: 3px;
+
+   &--add
+    width: 30px;
+    height: 30px;
+    min-width: 0;
+    min-height: 0;
+    margin-bottom: 26px;
+    padding: 0;
+    border-radius: 50%;
+    box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.16), 0px 2px 5px 0px rgba(0,0,0,0.26);
+
+  &__declineBlock
+    width: 100%;
+    text-align: right;
+    color: green-background;
+    font-family: Roboto-Medium;
+    font-size: 14px;
+    letter-spacing: -0.03px;
+
+   &__commit
+    margin-bottom: 117px;
+    font-family: Roboto-Regular;
+    font-size: 12px;
+    color: #676767;
+    letter-spacing: -0.01px;
 
 .addMember__input:focus + .addMember__label
  color: #808080;

@@ -26,7 +26,7 @@
         </md-input-container>
       </div>
 
-      <md-button class="onBoarding__btn " @click="submit(), changeCurrentModal('AddMember')">Okay, let's go</md-button>
+      <md-button class="onBoarding__btn " @click="submit()">Okay, let's go</md-button>
     </md-whiteframe>
 
 
@@ -59,17 +59,15 @@ export default {
   methods: {
     submit () {
       let localStorage = window.localStorage
+      let currentView = 'AddMember'
       localStorage.setItem('bandName', this.credentials.bandName)
-      console.log(window.localStorage)
-      var band = {
-        bandName: this.credentials.bandName,
-        bandSocialUrl: this.credentials.bandSocialUrl,
-        phone: this.credentials.phone
+
+      let band = {
+        name: this.credentials.bandName,
+        primary_url: this.credentials.bandSocialUrl
       }
       auth.createNewBand(band, this)
-    },
-    changeCurrentModal (curentView) {
-      this.$store.commit('changeCurrentModal', curentView)
+      this.$store.commit('changeCurrentModal', currentView)
     }
   }
 }
