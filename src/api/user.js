@@ -3,15 +3,15 @@ import { API_URL } from '../../config/constants'
 export default {
   // User object will let us check authentication status
   user: {
-    authenticated: false
+    authenticated: true
   },
 
   band: {
-    added: false
+    added: true
   },
 
   member: {
-    added: false
+    added: true
   },
 
   getUser () {
