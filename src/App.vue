@@ -1,6 +1,7 @@
 <template>
   <div id="app" class="app">
     <router-view name="navbar"></router-view>
+    <router-view name="sidebar"></router-view>
     <div class="app__contentLP">
       <h1 class="app__header"
           v-show="!user.authenticated">sign up for the best diy band management platform.</h1>

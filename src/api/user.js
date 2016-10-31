@@ -1,17 +1,20 @@
 import { API_URL } from '../../config/constants'
+import { router } from '../main'
+
+let localStorage = window.localStorage
 
 export default {
   // User object will let us check authentication status
   user: {
-    authenticated: true
+    authenticated: false
   },
 
   band: {
-    added: true
+    added: false
   },
 
   member: {
-    added: true
+    added: false
   },
 
   getUser () {
@@ -26,7 +29,6 @@ export default {
 
   loginUser (user, context) {
     console.log(this)
-    let localStorage = window.localStorage
     context.$http.post(API_URL + '/user/login', user)
     .then((user) => {
       console.log('User logged in')
@@ -36,6 +38,8 @@ export default {
       this.band.added = true
       this.member.added = true
       this.member.added = true
+
+      router.push('/dashboard')
     })
     .catch((err) => {
       console.log('Error logging in user: ', err)
@@ -47,6 +51,7 @@ export default {
     .then((user) => {
       console.log('User logged in')
       console.log(user.status)
+      localStorage.setItem('token', user.body.token)
       this.user.authenticated = true
       console.log('ifsuccess: ' + this.user.authenticated)
     })
@@ -70,10 +75,25 @@ export default {
     })
   },
 
-  logoutUser () {
-    this.$http.post(API_URL + '/logout')
+  checkAuth () {
+    var jwt = localStorage.getItem('token')
+    if (jwt) {
+      this.user.authenticated = true
+      console.log(router)
+      console.log('AUTH true')
+    } else {
+      this.user.authenticated = false
+      console.log('AUTH false')
+    }
+  },
+
+  logoutUser (context) {
+    context.$http.get(API_URL + '/user/logout')
     .then(() => {
       console.log('user logged out')
+      localStorage.removeItem('token')
+      this.user.authenticated = false
+      router.push('/')
     })
   }
 

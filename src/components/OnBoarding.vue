@@ -26,7 +26,7 @@
         </md-input-container>
       </div>
 
-      <md-button class="onBoarding__btn " @click="submit()">Okay, let's go</md-button>
+      <md-button class="onBoarding__btn " @click="submit(), changeCurrentModal('AddMember')">Okay, let's go</md-button>
     </md-whiteframe>
 
 
@@ -48,25 +48,18 @@ export default {
       band: auth.band
     }
   },
-  computed: {
-    addMemberPopupVisible () {
-      return this.$store.state.addMemberPopupVisible
-    },
-    currentView () {
-      return this.$store.state.currentView
-    }
-  },
   methods: {
     submit () {
       let localStorage = window.localStorage
-      let currentView = 'AddMember'
       localStorage.setItem('bandName', this.credentials.bandName)
-
+      auth.band.added = true
       let band = {
         name: this.credentials.bandName,
         primary_url: this.credentials.bandSocialUrl
       }
       auth.createNewBand(band, this)
+    },
+    changeCurrentModal (currentView) {
       this.$store.commit('changeCurrentModal', currentView)
     }
   }

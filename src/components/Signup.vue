@@ -52,14 +52,6 @@ export default {
       user: auth.user
     }
   },
-  computed: {
-    signUpPopupVisible () {
-      return this.$store.state.signUpPopupVisible
-    },
-    onBoardingPopupVisible () {
-      return this.$store.state.onBoardingPopupVisible
-    }
-  },
   methods: {
     submit () {
       var user = {

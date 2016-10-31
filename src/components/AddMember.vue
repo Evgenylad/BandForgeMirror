@@ -1,5 +1,5 @@
 <template>
-  <div class="addMember" v-if="user.authenticated && band.added && !member.added">
+  <div class="addMember">
 
     <md-whiteframe class="addMember__container">
 
@@ -28,15 +28,13 @@
                    @click="openDashboard()">No thanks, just take me to the app.</md-button>
       </div>
     </md-whiteframe>
-
-<pre style="background: white">
-  {{ $data | json }}
-</pre>
   </div>
 </template>
 
 <script>
 import auth from '../api/user'
+import { router } from '../main'
+
 export default {
   name: 'addMember',
   data () {
@@ -49,11 +47,6 @@ export default {
       user: auth.user,
       band: auth.band,
       member: auth.member
-    }
-  },
-  computed: {
-    addMemberPopupVisible () {
-      return this.$store.state.addMemberPopupVisible
     }
   },
   methods: {
@@ -70,9 +63,8 @@ export default {
       this.members.push(newMember)
     },
     openDashboard () {
-      auth.member.added = true
-      let currentView = ''
-      this.$store.commit('changeCurrentModal', currentView)
+      router.push('/dashboard')
+      this.$store.commit('changeCurrentModal', 'Login')
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="navbarInner" id="navbar-inner" v-if="member.added">
+  <div class="navbarInner" id="navbar-inner">
     <md-toolbar class="navbarInner__toolbar" v-md-theme="'default'">
       <div class="navbarInner__activeBand">
         <div class="navbarInner__userStatus">Active Band</div>
@@ -10,17 +10,7 @@
           </md-button>
         </div>
       </div>
-<!--      <div class="navbarInner__menu">-->
-      <!--  <md-button class="navbarInner__btn navbarInner__btn--btnMenu waves-effect waves-light"
-                   @click="showLoginPopup">Login
-        </md-button>
-
-        <md-button class="navbarInner__btn navbarInner__btn--btnMenu waves-effect waves-light"
-                   @click="showSignUpPopup">Sign Up
-        </md-button>-->
-
         <h2 class="navbarInner__title md-title">BandForge</h2>
-<!--      </div>-->
       <div class="navbarInner__userBlock">
         <md-button class="md-icon-button navbarInner__btn navbarInner__btn--find" @click="toggleLeftSidenav()">
           <md-icon>search</md-icon>
@@ -55,21 +45,6 @@ export default {
     }
   },
   methods: {
-    toggleLeftSidenav: function (event) {
-      this.$refs.leftSidenav.toggle()
-    },
-    toggleRightSidenav: function (event) {
-      this.$refs.rightSidenav.toggle()
-    },
-    closeRightSidenav: function (event) {
-      this.$refs.rightSidenav.close()
-    },
-    open: function (ref) {
-      console.log('Opened: ' + ref)
-    },
-    close: function (ref) {
-      console.log('Closed: ' + ref)
-    },
     showLoginPopup () {
       console.log(this.$store.state.loginPopupVisible)
       this.$store.commit('showLoginPopup')

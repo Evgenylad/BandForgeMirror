@@ -1,5 +1,5 @@
 <template>
-  <md-sidenav class="sidebar md-center" v-if="member.added">
+  <md-sidenav class="sidebar md-center">
     <md-list class="sidebar__list">
       <md-list-item class="sidebar__item">
         <md-icon class="sidebar__icon">dashboard</md-icon> <span class="sidebar__listItemName">Dashboard</span>
@@ -41,7 +41,8 @@
         <md-icon class="sidebar__icon">flag</md-icon> <span class="sidebar__listItemName">Account</span>
       </md-list-item>
 
-      <md-list-item class="sidebar__item">
+      <md-list-item class="sidebar__item"
+                    @click="logoutUser()">
         <md-icon class="sidebar__icon">event</md-icon> <span class="sidebar__listItemName">Logout</span>
       </md-list-item>
     </md-list>
@@ -58,6 +59,12 @@ export default {
       user: auth.user,
       band: auth.band,
       member: auth.member
+    }
+  },
+  methods: {
+    logoutUser () {
+      auth.logoutUser(this)
+      this.$store.commit('changeCurrentModal', 'Login')
     }
   }
 }

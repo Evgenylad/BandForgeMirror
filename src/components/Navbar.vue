@@ -1,6 +1,6 @@
 <template>
 
-  <div class="navbar" id="navbar" v-if="!member.added">
+  <div class="navbar" id="navbar">
     <md-toolbar class="navbar__toolbar" v-md-theme="'default'">
       <md-button class="md-icon-button navbar__btn navbar__btn--burger">
         <md-icon class="navbar__icon navbar__icon--burger">menu</md-icon>
