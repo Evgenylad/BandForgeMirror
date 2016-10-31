@@ -52,10 +52,19 @@ export const router = new VueRouter({
         navbar: NavbarInner,
         sidebar: Sidebar,
         foo: Foo
-      } }
+      }
+    }
   ]
 })
 
 auth.checkAuth()
+
+router.beforeEach((router, redirect, next) => {
+  if (auth.user.authenticated && router.path === '/') {
+    next('/dashboard')
+  } else {
+    next()
+  }
+})
 
 new Vue(Vue.util.extend({ router }, App)).$mount('#app')
