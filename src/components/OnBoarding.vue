@@ -48,28 +48,19 @@ export default {
       band: auth.band
     }
   },
-  computed: {
-    addMemberPopupVisible () {
-      return this.$store.state.addMemberPopupVisible
-    },
-    currentView () {
-      return this.$store.state.currentView
-    }
-  },
   methods: {
     submit () {
       let localStorage = window.localStorage
       localStorage.setItem('bandName', this.credentials.bandName)
-      console.log(window.localStorage)
-      var band = {
-        bandName: this.credentials.bandName,
-        bandSocialUrl: this.credentials.bandSocialUrl,
-        phone: this.credentials.phone
+      auth.band.added = true
+      let band = {
+        name: this.credentials.bandName,
+        primary_url: this.credentials.bandSocialUrl
       }
       auth.createNewBand(band, this)
     },
-    changeCurrentModal (curentView) {
-      this.$store.commit('changeCurrentModal', curentView)
+    changeCurrentModal (currentView) {
+      this.$store.commit('changeCurrentModal', currentView)
     }
   }
 }

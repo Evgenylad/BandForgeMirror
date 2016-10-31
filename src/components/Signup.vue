@@ -52,25 +52,16 @@ export default {
       user: auth.user
     }
   },
-  computed: {
-    signUpPopupVisible () {
-      return this.$store.state.signUpPopupVisible
-    },
-    onBoardingPopupVisible () {
-      return this.$store.state.onBoardingPopupVisible
-    }
-  },
   methods: {
     submit () {
       var user = {
         username: this.credentials.username,
-        password: this.credentials.password,
-        confirmPassword: this.credentials.confirmPassword
+        password: this.credentials.password
       }
       auth.signup(user, this)
     },
-    changeCurrentModal (curentView) {
-      this.$store.commit('changeCurrentModal', curentView)
+    changeCurrentModal (currentView) {
+      this.$store.commit('changeCurrentModal', currentView)
     }
   }
 }

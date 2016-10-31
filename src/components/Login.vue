@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="login" v-show="!user.authenticated">
 
     <md-whiteframe class="login__container">
       <div class="login__box">

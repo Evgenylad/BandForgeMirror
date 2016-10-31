@@ -1,8 +1,8 @@
 <template>
   <div id="app" class="app">
-    <div :class="{ app__content: member.added, app__contentLP: !member.added }">
-      <navbar></navbar>
-      <navbarInner></navbarInner>
+    <router-view name="navbar"></router-view>
+    <router-view name="sidebar"></router-view>
+    <div class="app__contentLP">
       <h1 class="app__header"
           v-show="!user.authenticated">sign up for the best diy band management platform.</h1>
       <h1 class="app__header"
@@ -11,15 +11,11 @@
           v-show="user.authenticated && band.added & !member.added">Let's invite your band mates.</h1>
 
       <transition name="modal" mode="out-in">
-        <component v-bind:is="this.$store.state.currentView"></component>
+        <component v-bind:is="this.$store.state.currentView"></component> // Dynamic component for SignUp, OnBoarding, AddMember components
       </transition>
-
-      <sidebar></sidebar>
-      <addMember></addMember>
-
     </div>
-    <foo></foo>
-    <router-view></router-view>
+
+    <router-view name="foo"></router-view>
   </div>
 </template>
 
@@ -28,10 +24,6 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import OnBoarding from './components/OnBoarding'
 import AddMember from './components/AddMember'
-import Navbar from './components/Navbar'
-import NavbarInner from './components/NavbarInner'
-import Foo from './components/Foo'
-import Sidebar from './components/Sidebar'
 import store from './vuex/store'
 import auth from './api/user'
 
@@ -48,11 +40,7 @@ export default {
     Login,
     Signup,
     OnBoarding,
-    AddMember,
-    Navbar,
-    NavbarInner,
-    Foo,
-    Sidebar
+    AddMember
   },
   store
 }

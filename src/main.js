@@ -7,9 +7,16 @@ import VueLocalStorage from 'vue-localstorage'
 import VueResource from 'vue-resource'
 import Keen from 'keen-ui'
 
-import Dashboard from './components/Dashboard'
-import Shows from './components/Shows'
+import Sidebar from './components/Sidebar'
+import NavbarInner from './components/NavbarInner'
+import Foo from './components/Foo'
 import Login from './components/Login'
+import Signup from './components/Signup'
+import Navbar from './components/Navbar'
+import OnBoarding from './components/OnBoarding'
+import AddMember from './components/AddMember'
+
+import auth from './api/user'
 
 Vue.use(Vuex)
 Vue.use(VueRouter)
@@ -24,14 +31,31 @@ Vue.material.theme.register('default', {
   accent: 'orange'
 })
 
-const router = new VueRouter({
+export const router = new VueRouter({
   mode: 'history',
   base: __dirname,
   routes: [
-    { path: '/', component: Dashboard },
-    { path: '/shows', component: Shows },
-    { path: '/login', component: Login }
+    {
+      path: '/',
+      components: {
+        navbar: Navbar,
+        login: Login,
+        signup: Signup,
+        foo: Foo,
+        onboarding: OnBoarding,
+        addmember: AddMember
+      }
+    },
+    {
+      path: '/dashboard',
+      components: {
+        navbar: NavbarInner,
+        sidebar: Sidebar,
+        foo: Foo
+      } }
   ]
 })
+
+auth.checkAuth()
 
 new Vue(Vue.util.extend({ router }, App)).$mount('#app')
