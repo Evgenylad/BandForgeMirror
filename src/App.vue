@@ -33,7 +33,8 @@ export default {
 @import './styles/colors'
 @import './styles/grid'
 @import '../styles/app'
-
+.app
+ height: 100%
 body
   height: 100%
   overflow-y: hidden
