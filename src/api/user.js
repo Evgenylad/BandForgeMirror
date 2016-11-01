@@ -17,8 +17,8 @@ export default {
     added: false
   },
 
-  getUser () {
-    this.$http.get(API_URL + '/user')
+  getUser (context) {
+    context.$http.get(API_URL + '/user')
     .then((user) => {
       console.log('user is: ', user)
     })
@@ -28,18 +28,16 @@ export default {
   },
 
   loginUser (user, context) {
-    console.log(this)
     context.$http.post(API_URL + '/user/login', user)
     .then((user) => {
-      console.log('User logged in')
-
+      console.log('user is: ', user)
       localStorage.setItem('token', user.body.token)
       this.user.authenticated = true
       this.band.added = true
       this.member.added = true
       this.member.added = true
 
-      router.push('/dashboard')
+      router.push('/dashboard/shows')
     })
     .catch((err) => {
       console.log('Error logging in user: ', err)
@@ -53,6 +51,7 @@ export default {
       console.log(user.status)
       localStorage.setItem('token', user.body.token)
       this.user.authenticated = true
+      console.log(this.band.added)
       console.log('ifsuccess: ' + this.user.authenticated)
     })
     .catch((err) => {

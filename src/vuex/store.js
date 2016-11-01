@@ -5,7 +5,9 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    currentView: 'Signup'
+    currentView: 'Signup',
+    shows: [],
+    activeBandId: ''
   },
   mutations: {
     changeCurrentModal: (state, currentView) => {

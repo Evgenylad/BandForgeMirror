@@ -1,39 +1,37 @@
 <template>
   <div class="dashboard">
-    <router-view name="navbarinner"></router-view>
-    <router-view name="sidebar"></router-view>
-    <router-view name="footer"></router-view>
+    <navbarInner></navbarInner>
+    <div class="dashboard__content">
+      <sidebar></sidebar>
+      <router-view></router-view>
+    </div>
+    <foo></foo>
   </div>
 </template>
 
 <script>
+import NavbarInner from './NavbarInner'
+import Sidebar from './Sidebar'
+import Foo from './Foo'
+import Shows from './Shows'
 export default {
   name: 'dashboard',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  components: {
+    NavbarInner,
+    Sidebar,
+    Foo,
+    Shows
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
+<style scoped lang="stylus">
+@import '../styles/colors'
+@import '../styles/dashboard'
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>

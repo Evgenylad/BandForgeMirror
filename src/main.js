@@ -7,14 +7,18 @@ import VueLocalStorage from 'vue-localstorage'
 import VueResource from 'vue-resource'
 import Keen from 'keen-ui'
 
-import Sidebar from './components/Sidebar'
-import NavbarInner from './components/NavbarInner'
+import Root from './components/Root'
 import Foo from './components/Foo'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Navbar from './components/Navbar'
 import OnBoarding from './components/OnBoarding'
 import AddMember from './components/AddMember'
+import Shows from './components/Shows'
+import Tours from './components/Tours'
+import Merch from './components/Merch'
+import Bands from './components/Bands'
+import Dashboard from './components/Dashboard'
 
 import auth from './api/user'
 
@@ -37,22 +41,55 @@ export const router = new VueRouter({
   routes: [
     {
       path: '/',
-      components: {
-        navbar: Navbar,
-        login: Login,
-        signup: Signup,
-        foo: Foo,
-        onboarding: OnBoarding,
-        addmember: AddMember
-      }
+      component: Root,
+      children: [
+        {
+          path: 'navbar',
+          component: Navbar
+        },
+        {
+          path: 'login',
+          component: Login
+        },
+        {
+          path: 'signup',
+          component: Signup
+        },
+        {
+          path: 'onboarding',
+          component: OnBoarding
+        },
+        {
+          path: 'addmember',
+          component: AddMember
+        },
+        {
+          path: 'foo',
+          component: Foo
+        }
+      ]
     },
     {
       path: '/dashboard',
-      components: {
-        navbar: NavbarInner,
-        sidebar: Sidebar,
-        foo: Foo
-      }
+      component: Dashboard,
+      children: [
+        {
+          path: 'shows',
+          component: Shows
+        },
+        {
+          path: 'tours',
+          component: Tours
+        },
+        {
+          path: 'merch',
+          component: Merch
+        },
+        {
+          path: 'bands',
+          component: Bands
+        }
+      ]
     }
   ]
 })
@@ -61,7 +98,7 @@ auth.checkAuth()
 
 router.beforeEach((router, redirect, next) => {
   if (auth.user.authenticated && router.path === '/') {
-    next('/dashboard')
+    next('/dashboard/shows')
   } else {
     next()
   }
