@@ -36,26 +36,7 @@ export default {
     }
   },
   name: 'navbar',
-  computed: {
-    loginPopupVisible () {
-      return this.$store.state.loginPopupVisible
-    },
-    signUpPopupVisible () {
-      return this.$store.state.signUpPopupVisible
-    },
-    currentView () {
-      return this.$store.state.currentView
-    }
-  },
   methods: {
-    showLoginPopup () {
-      console.log(this.$store.state.loginPopupVisible)
-      this.$store.commit('showLoginPopup')
-    },
-    showSignUpPopup () {
-      console.log(this.$store.state.signUpPopupVisible)
-      this.$store.commit('showSignUpPopup')
-    },
     changeCurrentModal (curentView) {
       this.$store.commit('changeCurrentModal', curentView)
     }

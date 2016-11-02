@@ -12,13 +12,14 @@
 
         <md-input-container class="login__inputBlock">
           <label class="login__label" for="login__pass">Password</label>
-          <md-input class="login__input" id="login__pass"
+          <md-input class="login__input" id="login__pass" type="password"
                     v-model="credentials.password">
           </md-input>
         </md-input-container>
       </div>
 
       <md-button class="login__btn " @click="submit()">login</md-button>
+
 
       <div class="login__welcomeText">
         Not a user yet? Sign Up here.
@@ -32,6 +33,7 @@
 
 <script>
 import auth from '../api/user'
+
 export default {
   name: 'login',
   data () {
@@ -40,7 +42,9 @@ export default {
         username: '',
         password: ''
       },
-      user: auth.user
+      user: auth.user,
+      userId: auth.user.userId,
+      activeBandId: auth.band.activeBandId
     }
   },
   methods: {
@@ -50,6 +54,8 @@ export default {
         password: this.credentials.password
       }
       auth.loginUser(user, this)
+      this.$store.commit('addUserId', this.userId)
+      this.$store.commit('addActiveBandId', this.activeBandId)
     }
   }
 }

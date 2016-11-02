@@ -1,0 +1,44 @@
+.addShow
+  margin: 0 auto;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: green-background;
+
+  &__container
+   width: 430px;
+   min-height: 500px;
+   background: #393c42;
+   border: 1px solid rgba(150,150,150,0.11);
+   box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.20);
+   border-radius: 2px;
+
+  &__inputBlock {
+    width: 330px;
+    margin: 0 auto;
+  }
+
+  &__label
+   font-family: Roboto-Light;
+   font-size: 16px;
+   color: green-background !important;
+   text-transform: uppercase;
+
+  &__input
+   color: #fafafa !important;
+   height: 40px;
+   margin-top: 20px;
+   padding-left: 10px;
+   border-bottom: 1px solid green-background;
+   &:focus
+    border-bottom: 1px solid input-focus;
+
+  &__btn
+   margin-top: 59px;
+   font-family: Roboto-Medium;
+   font-size: 14px;
+   letter-spacing: -0.03px;
+   &--cancel
+    color: #8f9499 !important;

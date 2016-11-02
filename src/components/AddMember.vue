@@ -63,7 +63,7 @@ export default {
       this.members.push(newMember)
     },
     openDashboard () {
-      router.push('/dashboard')
+      router.push('/dashboard/shows')
       this.$store.commit('changeCurrentModal', 'Login')
     }
   }

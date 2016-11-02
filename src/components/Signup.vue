@@ -13,14 +13,14 @@
 
         <md-input-container class="signup__inputBlock">
           <label class="signup__label" for="signup__pass">Password</label>
-          <md-input class="signup__input" id="signup__pass"
+          <md-input class="signup__input" id="signup__pass" type="password"
                     v-model="credentials.password">
           </md-input>
         </md-input-container>
 
         <md-input-container class="signup__inputBlock">
           <label class="signup__label" for="signup__conf_pass">Confirm Password</label>
-          <md-input class="signup__input" id="signup__conf_pass"
+          <md-input class="signup__input" id="signup__conf_pass" type="password"
                     v-model="credentials.confirmPassword">
           </md-input>
         </md-input-container>

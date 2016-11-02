@@ -6,19 +6,21 @@ let localStorage = window.localStorage
 export default {
   // User object will let us check authentication status
   user: {
-    authenticated: false
+    authenticated: false,
+    userId: ''
   },
 
   band: {
-    added: false
+    added: false,
+    activeBandId: ''
   },
 
   member: {
     added: false
   },
 
-  getUser () {
-    this.$http.get(API_URL + '/user')
+  getUser (context) {
+    context.$http.get(API_URL + '/user')
     .then((user) => {
       console.log('user is: ', user)
     })
@@ -28,18 +30,18 @@ export default {
   },
 
   loginUser (user, context) {
-    console.log(this)
     context.$http.post(API_URL + '/user/login', user)
     .then((user) => {
-      console.log('User logged in')
-
       localStorage.setItem('token', user.body.token)
       this.user.authenticated = true
+      this.user.userId = user.body.user.user_id
+      this.band.activeBandId = user.body.user.active_band_id
       this.band.added = true
       this.member.added = true
       this.member.added = true
-
-      router.push('/dashboard')
+      console.log('user is: ', this.user.userId)
+      console.log('user is: ', this.band.activeBandId)
+      router.push('/dashboard/shows')
     })
     .catch((err) => {
       console.log('Error logging in user: ', err)
@@ -53,6 +55,7 @@ export default {
       console.log(user.status)
       localStorage.setItem('token', user.body.token)
       this.user.authenticated = true
+      console.log(this.band.added)
       console.log('ifsuccess: ' + this.user.authenticated)
     })
     .catch((err) => {

@@ -1,29 +1,12 @@
 <template>
   <div id="app" class="app">
-    <router-view name="navbar"></router-view>
-    <router-view name="sidebar"></router-view>
-    <div class="app__contentLP">
-      <h1 class="app__header"
-          v-show="!user.authenticated">sign up for the best diy band management platform.</h1>
-      <h1 class="app__header"
-          v-show="user.authenticated && !band.added">We need a few things from you first.</h1>
-      <h1 class="app__header"
-          v-show="user.authenticated && band.added & !member.added">Let's invite your band mates.</h1>
-
-      <transition name="modal" mode="out-in">
-        <component v-bind:is="this.$store.state.currentView"></component> // Dynamic component for SignUp, OnBoarding, AddMember components
-      </transition>
-    </div>
-
-    <router-view name="foo"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Login from './components/Login'
-import Signup from './components/Signup'
-import OnBoarding from './components/OnBoarding'
-import AddMember from './components/AddMember'
+import Root from './components/Root'
+import Dashboard from './components/Dashboard'
 import store from './vuex/store'
 import auth from './api/user'
 
@@ -37,10 +20,8 @@ export default {
     }
   },
   components: {
-    Login,
-    Signup,
-    OnBoarding,
-    AddMember
+    Root,
+    Dashboard
   },
   store
 }
@@ -52,7 +33,8 @@ export default {
 @import './styles/colors'
 @import './styles/grid'
 @import '../styles/app'
-
+.app
+ height: 100%
 body
   height: 100%
   overflow-y: hidden

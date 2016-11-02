@@ -35,24 +35,6 @@ export default {
       user: auth.user,
       member: auth.member
     }
-  },
-  computed: {
-    loginPopupVisible () {
-      return this.$store.state.loginPopupVisible
-    },
-    signUpPopupVisible () {
-      return this.$store.state.signUpPopupVisible
-    }
-  },
-  methods: {
-    showLoginPopup () {
-      console.log(this.$store.state.loginPopupVisible)
-      this.$store.commit('showLoginPopup')
-    },
-    showSignUpPopup () {
-      console.log(this.$store.state.signUpPopupVisible)
-      this.$store.commit('showSignUpPopup')
-    }
   }
 }
 </script>
