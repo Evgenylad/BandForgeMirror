@@ -1,6 +1,7 @@
 <template>
   <div class="shows">
-    <md-button class="shows__btn shows__btn--add" @click="getId()">Add show</md-button>
+    <addShow></addShow>
+    <md-button class="shows__btn shows__btn--add" @click="addShow()">Add show</md-button>
     <div class="shows__container">
       <h2 class="shows__title">All Shows</h2>
       <div class="shows__row shows__row--even">
@@ -43,18 +44,37 @@
 </template>
 
 <script>
-import auth from '../api/user'
+import { API_URL } from '../../../config/constants'
+
+import AddShow from './AddShow'
 export default {
   name: 'shows',
+  components: { AddShow },
   data () {
     return {
       title: 'Shows',
       shows: this.$store.state.shows
     }
   },
+  computed: {
+    userId () {
+      return this.$store.state.userId
+    },
+    activeBandId () {
+      return this.$store.state.activeBandId
+    }
+  },
   methods: {
-    getId () {
-      auth.getUser(this)
+    addShow () {
+      this.$http.get(API_URL + '/api/band/getBandInfoById/:' + this.$store.state.activeBandId + '?shows=true')
+      .then((response) => {
+        console.log(response)
+        var v = response.blob()
+        console.log(v)
+      })
+      .catch((err) => {
+        console.log('Band did NOT added: ', err)
+      })
     }
   }
 }
@@ -62,7 +82,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-@import '../styles/colors'
-@import '../styles/shows'
+@import '../../styles/colors'
+@import '../../styles/Shows/shows'
 
 </style>

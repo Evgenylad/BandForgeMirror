@@ -6,11 +6,13 @@ let localStorage = window.localStorage
 export default {
   // User object will let us check authentication status
   user: {
-    authenticated: false
+    authenticated: false,
+    userId: ''
   },
 
   band: {
-    added: false
+    added: false,
+    activeBandId: ''
   },
 
   member: {
@@ -30,13 +32,15 @@ export default {
   loginUser (user, context) {
     context.$http.post(API_URL + '/user/login', user)
     .then((user) => {
-      console.log('user is: ', user)
       localStorage.setItem('token', user.body.token)
       this.user.authenticated = true
+      this.user.userId = user.body.user.user_id
+      this.band.activeBandId = user.body.user.active_band_id
       this.band.added = true
       this.member.added = true
       this.member.added = true
-
+      console.log('user is: ', this.user.userId)
+      console.log('user is: ', this.band.activeBandId)
       router.push('/dashboard/shows')
     })
     .catch((err) => {

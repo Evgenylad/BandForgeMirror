@@ -13,7 +13,7 @@
 import NavbarInner from './NavbarInner'
 import Sidebar from './Sidebar'
 import Foo from './Foo'
-import Shows from './Shows'
+import Shows from './Shows/Shows'
 export default {
   name: 'dashboard',
   data () {

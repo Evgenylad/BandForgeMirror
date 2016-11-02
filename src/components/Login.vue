@@ -43,7 +43,8 @@ export default {
         password: ''
       },
       user: auth.user,
-      someData: ''
+      userId: auth.user.userId,
+      activeBandId: auth.band.activeBandId
     }
   },
   methods: {
@@ -53,14 +54,8 @@ export default {
         password: this.credentials.password
       }
       auth.loginUser(user, this)
-
-    /*  this.$http.get(API_URL + '/api/band/getBandInfoById/:bandid')
-      .then((response) => {
-        console.log(response.body)
-      })
-      .catch((err) => {
-        console.log('Error checking user ', err)
-      }) */
+      this.$store.commit('addUserId', this.userId)
+      this.$store.commit('addActiveBandId', this.activeBandId)
     }
   }
 }
