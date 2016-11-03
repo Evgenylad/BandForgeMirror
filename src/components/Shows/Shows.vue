@@ -45,7 +45,7 @@
 
 <script>
 import { API_URL } from '../../../config/constants'
-
+import auth from '../../api/user'
 import AddShow from './AddShow'
 export default {
   name: 'shows',
@@ -66,7 +66,9 @@ export default {
   },
   methods: {
     addShow () {
-      this.$http.get(API_URL + '/api/band/getBandInfoById/:' + this.$store.state.activeBandId + '?shows=true')
+      let headers = auth.getAuthHeader()
+      console.log(headers)
+      this.$http.get(API_URL + '/api/band/getBandInfoById/:' + this.$store.state.activeBandId, headers)
       .then((response) => {
         console.log(response)
         var v = response.blob()

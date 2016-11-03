@@ -10,35 +10,127 @@
   &__container
    width: 430px;
    min-height: 500px;
+
+   padding-top: 15px;
+   padding-left: 25px;
+   padding-right: 30px;
    background: #393c42;
    border: 1px solid rgba(150,150,150,0.11);
    box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.20);
    border-radius: 2px;
 
-  &__inputBlock {
-    width: 330px;
-    margin: 0 auto;
-  }
+  &__row
+   display: flex;
+   justify-content: space-between;
+
+  &__title
+   margin: 0;
+   font-size: 20px;
+
+  &__inputBlock
+   position: relative;
+   width: 330px;
+   height: 45px;
+   min-height: 30px;
+   margin: 0 auto;
+   margin-bottom: 38px;
+   cursor: pointer;
+   &::after
+    background-color: inherit !important;
+   &--chooseBand
+    position: relative;
+    display: flex !important;
+    justify-content: space-between;
+    padding: 0 19px;
+    margin-bottom: 128px;
+   &--date
+    display: flex !important;
+    justify-content: space-between;
+    padding: 0 19px;
+    margin-bottom: 50px;
+   &:last-of-type
+    margin-bottom: 30px;
 
   &__label
+   height: 32px;
+   align-self: center;
    font-family: Roboto-Light;
    font-size: 16px;
    color: green-background !important;
-   text-transform: uppercase;
+   cursor: pointer;
+   &--chooseBand
+    width: 113px;
+   &--datepicker
+    display: block;
+    width: 113px;
+    height: 45px;
+    margin-right: 10px;
+    line-height: 45px;
 
   &__input
    color: #fafafa !important;
-   height: 40px;
-   margin-top: 20px;
+   height: 30px;
    padding-left: 10px;
+   font-family: Roboto-Regular;
+   letter-spacing: -0.01px;
    border-bottom: 1px solid green-background;
    &:focus
     border-bottom: 1px solid input-focus;
 
+  &__datepicker
+   width: 133px;
+   &::after
+    position: absolute;
+
+  &__btnBlock
+   display: flex;
+   justify-content: flex-end;
+   margin-bottom: 10px;
+
   &__btn
-   margin-top: 59px;
+   padding: 0;
+   margin: 0;
    font-family: Roboto-Medium;
    font-size: 14px;
    letter-spacing: -0.03px;
    &--cancel
     color: #8f9499 !important;
+
+  &__dateBtn
+   height: 24px;
+   position: relative;
+   align-self: center;
+   min-width: 24px;
+   min-height: 24px;
+   padding: 0;
+   margin: 0;
+   margin-right: 32px;
+   &--tick
+    position: absolute;
+    top: 23%;
+    right: 13px;
+    margin-right: 0;
+
+  &__icon
+   position: absolute;
+   right: 0;
+   top: 0;
+   align-self: center;
+   padding: 0;
+   margin: 0;
+   color: green-background !important;
+   &--tick
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+
+.addShow__datepicker > input
+ &::-webkit-input-placeholder
+  color green-background;
+ &::-moz-placeholder
+  color green-background;
+ &:-moz-placeholder
+  color: green-background;
+ &:-ms-input-placeholder
+  color: green-background;
