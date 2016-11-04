@@ -35,6 +35,7 @@
             <md-option value="Godfather II">Godfather II</md-option>
             <md-option value="Godfather III">Godfather III</md-option>
           </md-select>
+          <md-icon class="addShow__icon addShow__icon--arrowDown">expand_more</md-icon>
         </md-input-container>
 
         <md-input-container class="addShow__inputBlock">

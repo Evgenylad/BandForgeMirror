@@ -40,6 +40,8 @@
         <div class="show__cell show__cell--ticketUrl">{{ show.url }}</div>
       </div>
     </div>
+
+    <showDetails></showDetails>
   </div>
 </template>
 
@@ -47,9 +49,10 @@
 import { API_URL } from '../../../config/constants'
 import auth from '../../api/user'
 import AddShow from './AddShow'
+import ShowDetails from './showDetails'
 export default {
   name: 'shows',
-  components: { AddShow },
+  components: { AddShow, ShowDetails },
   data () {
     return {
       title: 'Shows',

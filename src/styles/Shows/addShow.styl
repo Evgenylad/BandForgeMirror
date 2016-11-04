@@ -124,9 +124,14 @@
     top: 50%;
     right: 0;
     transform: translateY(-50%);
+   &--arrowDown
+    position: absolute;
+    top: 38%;
+    right: 14px;
+    transform: translateY(-50%);
 
 .addShow__datepicker > input
- &::-webkit-input-placeholder
+ &:-webkit-input-placeholder
   color green-background;
  &::-moz-placeholder
   color green-background;
@@ -134,3 +139,6 @@
   color: green-background;
  &:-ms-input-placeholder
   color: green-background;
+
+.md-select::after
+ content: '' !important
