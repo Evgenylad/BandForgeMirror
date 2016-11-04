@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import auth from '../api/user'
+import auth from '../../api/user'
 export default {
   data () {
     return {
@@ -45,8 +45,7 @@ export default {
 </script>
 
 <style media="screen" lang="stylus">
-@import '../styles/colors'
-@import '../styles/navbar'
+@import '../../styles/Root/navbar'
 
 .md-toolbar
   background-color: secondary-background !important

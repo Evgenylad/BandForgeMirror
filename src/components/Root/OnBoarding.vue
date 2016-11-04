@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import auth from '../api/user'
+import auth from '../../api/user'
 export default {
   name: 'onBoarding',
   data () {
@@ -67,7 +67,6 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-@import '../styles/colors'
-@import '../styles/onBoarding'
+@import '../../styles/Root/onBoarding'
 
 </style>

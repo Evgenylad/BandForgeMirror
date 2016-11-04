@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import Root from './components/Root'
-import Dashboard from './components/Dashboard'
+import Root from './components/Root/Root'
+import Dashboard from './components/Dashboard/Dashboard'
 import store from './vuex/store'
 import auth from './api/user'
 
@@ -30,11 +30,10 @@ export default {
 <style lang="stylus">
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons")
 @import '../node_modules/vue-material/dist/vue-material.css'
-@import './styles/colors'
-@import './styles/grid'
-@import '../styles/app'
+@import '/styles/colors'
 .app
  height: 100%
+ background: main-background;
 body
   height: 100%
   overflow-y: hidden

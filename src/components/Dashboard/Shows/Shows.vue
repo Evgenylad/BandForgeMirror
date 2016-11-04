@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import { API_URL } from '../../../config/constants'
-import auth from '../../api/user'
+import { API_URL } from '../../../../config/constants'
+import auth from '../../../api/user'
 import AddShow from './AddShow'
 import ShowDetails from './showDetails'
 export default {
@@ -87,7 +87,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-@import '../../styles/colors'
-@import '../../styles/Shows/shows'
+@import '../../../styles/Dashboard/Shows/shows'
 
 </style>

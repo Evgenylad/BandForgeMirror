@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import auth from '../api/user'
+import auth from '../../api/user'
 export default {
   name: 'sidebar',
   data () {
@@ -98,7 +98,6 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-@import '../styles/colors'
-@import '../styles/sidebar'
+@import '../../styles/Dashboard/sidebar'
 
 </style>

@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import auth from '../api/user'
+import auth from '../../api/user'
 export default {
   name: 'signup',
   data () {
@@ -68,7 +68,7 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-@import '../styles/colors'
-@import '../styles/signup'
+@import '../../styles/colors'
+@import '../../styles/Root/signup'
 
 </style>

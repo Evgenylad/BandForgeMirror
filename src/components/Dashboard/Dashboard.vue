@@ -12,7 +12,7 @@
 <script>
 import NavbarInner from './NavbarInner'
 import Sidebar from './Sidebar'
-import Foo from './Foo'
+import Foo from './../Foo'
 import Shows from './Shows/Shows'
 export default {
   name: 'dashboard',
@@ -31,7 +31,6 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-@import '../styles/colors'
-@import '../styles/dashboard'
+@import '../../styles/Dashboard/dashboard'
 
 </style>

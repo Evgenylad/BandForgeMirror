@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { API_URL } from '../../../config/constants'
+import { API_URL } from '../../../../config/constants'
 import Datepicker from 'vue-datepicker'
 export default {
   name: 'addShow',
@@ -162,8 +162,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-@import '../../styles/colors'
-@import '../../styles/Shows/addShow'
+@import '../../../styles/colors'
+@import '../../../styles/Dashboard/Shows/addShow'
 
 .md-select::after
  color: green-background;

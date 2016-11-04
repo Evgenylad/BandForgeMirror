@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import auth from '../api/user'
+import auth from '../../api/user'
 export default {
   name: 'navbarInner',
   data () {
@@ -70,8 +70,7 @@ export default {
 </script>
 
 <style media="screen" lang="stylus">
-@import '../styles/colors'
-@import '../styles/navbarInner'
+@import '../../styles/Dashboard/navbarInner'
 
 .md-toolbar
   background-color: secondary-background !important
@@ -91,5 +90,5 @@ export default {
   background: #1f2226 !important;
 
 .md-list-item .md-list-item-container
-  padding: 0 10px !important;
+  padding: 0 22px !important;
 </style>

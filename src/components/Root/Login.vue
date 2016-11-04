@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import auth from '../api/user'
+import auth from '../../api/user'
 
 export default {
   name: 'login',
@@ -63,7 +63,6 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-@import '../styles/colors'
-@import '../styles/login'
+@import '../../styles/Root/login'
 
 </style>
