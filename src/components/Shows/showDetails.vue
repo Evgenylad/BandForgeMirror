@@ -3,7 +3,9 @@
     <md-whiteframe class="showDetails__container">
       <div class="showDetails__header">
         <h2 class="showDetails__title">{{ bands[0].name }} @ In The Venue</h2>
-        <md-switch class="showDetails__switch" v-model="confirmed" id="confirmed" name="confirmed">Confirmed</md-switch>
+        <div class="showDetails__centrBlock">
+          <md-switch class="showDetails__switch" v-model="confirmed" id="confirmed" name="confirmed">Confirmed</md-switch>  
+        </div>
         <div class="showDetails__userBlock">
           <md-icon class="showDetails__icon showDetails__icon--delete">delete</md-icon>
           <md-icon class="showDetails__icon showDetails__icon--send">send</md-icon>
