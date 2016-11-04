@@ -5,14 +5,14 @@
         <div class="navbarInner__userStatus">Active Band</div>
         <div class="navbarInner__userTitle">
           <h1 class="navbarInner__userName">Some Band</h1>
-          <md-button class="md-icon-button navbarInner__btn navbarInner__btn--tick" @click="toggleLeftSidenav()">
+          <md-button class="md-icon-button navbarInner__btn navbarInner__btn--tick" @click="toggleChangeActiveBand()">
             <md-icon>arrow_drop_down</md-icon>
           </md-button>
         </div>
       </div>
         <h2 class="navbarInner__title md-title">BandForge</h2>
       <div class="navbarInner__userBlock">
-        <md-button class="md-icon-button navbarInner__btn navbarInner__btn--find" @click="toggleLeftSidenav()">
+        <md-button class="md-icon-button navbarInner__btn navbarInner__btn--find">
           <md-icon>search</md-icon>
         </md-button>
 
@@ -22,8 +22,17 @@
       </div>
     </md-toolbar>
 
-  </div>
+    <transition name="moveDown">
+      <ul class="navbarInner__list"
+          v-show="activeBandPopup">
+        <li class="navbarInner__listItem"
+            v-for="band in bands">
+            <a href="#" class="navbarInner__link">{{ band.name }}</a>
+        </li>
+      </ul>
+    </transition>
 
+  </div>
 </template>
 
 <script>
@@ -33,7 +42,28 @@ export default {
   data () {
     return {
       user: auth.user,
-      member: auth.member
+      member: auth.member,
+      activeBandPopup: true,
+      bands: [
+        {
+          name: 'Hard Luck'
+        },
+        {
+          name: 'RHCP'
+        },
+        {
+          name: 'Linkin Park'
+        }
+      ]
+    }
+  },
+  methods: {
+    toggleChangeActiveBand: function () {
+      if (this.activeBandPopup) {
+        this.activeBandPopup = false
+      } else {
+        this.activeBandPopup = true
+      }
     }
   }
 }
