@@ -1,12 +1,10 @@
 @import '../../../styles/colors'
 .showDetails
-  width: 86%;
+  position: relative;
+  width: calc(1441/1920*100%);
+  padding: 97px 0;
   margin: 0 auto;
   z-index: 1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%);
   color: green-background;
 
   &__container
@@ -49,6 +47,16 @@
    display: flex;
    justify-content: space-between;
    width: 80px;
+
+  &__btn
+   position: relative;
+   &--send
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    margin: 0;
+    padding: 0;
 
   &__content
    display: flex;
@@ -196,6 +204,9 @@
    &--delete
     font-size: 20px;
    &--send
+    position: absolute;
+    top: 0;
+    left: 0;
     font-size: 20px;
    &--list
     width: 35px;

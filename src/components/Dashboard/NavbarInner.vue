@@ -87,6 +87,7 @@ export default {
 .md-sidenav-content
   width: 256px !important;
   top: 64px !important;
+  left: 0;
   background: #1f2226 !important;
 
 .md-list-item .md-list-item-container

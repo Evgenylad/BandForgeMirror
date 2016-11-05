@@ -8,7 +8,10 @@
         </div>
         <div class="showDetails__userBlock">
           <md-icon class="showDetails__icon showDetails__icon--delete">delete</md-icon>
-          <md-icon class="showDetails__icon showDetails__icon--send">send</md-icon>
+          <md-button class="showDetails__btn showDetails__btn--send"
+                     @click="openShareShowPopup()">
+            <md-icon class="showDetails__icon showDetails__icon--send">send</md-icon>
+          </md-button>
         </div>
       </div>
 
@@ -121,19 +124,23 @@
         </div>
       </div>
     </md-whiteframe>
+
+    <shareShow ref="ShareShow"></shareShow>
   </div>
 </template>
 
 <style scoped lang="stylus">
-@import '../../../styles/Dashboard/Shows/showdetails'
+@import '../../../styles/Dashboard/Shows/showDetails'
 
 </style>
 
 <script>
 /*  import auth from '../../api/user'
 */
+  import ShareShow from './ShareShow'
   export default {
     name: 'showDetails',
+    components: { ShareShow },
     data () {
       return {
         bands: [
@@ -145,6 +152,11 @@
           }
         ],
         confirmed: false
+      }
+    },
+    methods: {
+      openShareShowPopup: function (event) {
+        this.$refs.ShareShow.open()
       }
     }
   }
