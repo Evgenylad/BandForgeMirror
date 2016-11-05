@@ -15,6 +15,7 @@ import Navbar from './components/Root/Navbar'
 import OnBoarding from './components/Root/OnBoarding'
 import AddMember from './components/Root/AddMember'
 import Shows from './components/Dashboard/Shows/Shows'
+import ShowDetails from './components/Dashboard/Shows/ShowDetails'
 import Tours from './components/Dashboard/Tours'
 import Merch from './components/Dashboard/Merch'
 import Bands from './components/Dashboard/Bands'
@@ -88,6 +89,10 @@ export const router = new VueRouter({
         {
           path: 'bands',
           component: Bands
+        },
+        {
+          path: 'showdetails',
+          component: ShowDetails
         }
       ]
     }

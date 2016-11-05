@@ -1,5 +1,6 @@
 <template>
-  <div class="addShow">
+  <div class="addShow"
+       v-if="showPopupVisible">
     <md-whiteframe class="addShow__container">
       <div class="addShow__box">
         <div class="addShow__row">
@@ -63,6 +64,7 @@ export default {
   components: {Datepicker},
   data () {
     return {
+      showPopupVisible: false,
       startTime: {
         time: ''
       },
@@ -155,6 +157,13 @@ export default {
     trigger (selector) {
       let datepicker = document.querySelector(selector)
       datepicker.click()
+    },
+    toggle () {
+      if (this.showPopupVisible) {
+        this.showPopupVisible = false
+      } else {
+        this.showPopupVisible = true
+      }
     }
   }
 }

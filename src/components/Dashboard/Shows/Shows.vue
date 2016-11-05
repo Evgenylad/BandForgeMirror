@@ -1,7 +1,7 @@
 <template>
   <div class="shows">
-    <addShow></addShow>
-    <md-button class="shows__btn shows__btn--add" @click="addShow()">Add show</md-button>
+    <addShow ref="AddShow"></addShow>
+    <md-button class="shows__btn shows__btn--add" @click="toggleAddShowPopup()">Add show</md-button>
     <div class="shows__container">
       <h2 class="shows__title">All Shows</h2>
       <div class="shows__row shows__row--even">
@@ -17,31 +17,27 @@
       </div>
 
       <div class="shows__row shows__row--odd">
-        <div class="show__cell show__cell--checkbox">
-          <input type="checkbox" name="name">
-        </div>
-        <div class="show__cell show__cell--name">Show Name / Description</div>
-        <div class="show__cell show__cell--date">Date</div>
-        <div class="show__cell show__cell--contact">Contact</div>
-        <div class="show__cell show__cell--status">Status</div>
-        <div class="show__cell show__cell--venue">Venue</div>
-        <div class="show__cell show__cell--ticketUrl">Ticket URL</div>
+        <md-checkbox class="shows__cell shows__cell--checkbox md-primary" name="checkbox" v-model="checkbox" id="checkbox"></md-checkbox>
+        <div class="shows__cell shows__cell--name">Show Name / Description</div>
+        <div class="shows__cell shows__cell--date">Date</div>
+        <div class="shows__cell shows__cell--contact">Contact</div>
+        <div class="shows__cell shows__cell--status">Status</div>
+        <div class="shows__cell shows__cell--venue">Venue</div>
+        <div class="shows__cell shows__cell--ticketUrl">Ticket URL</div>
       </div>
 
       <div class="shows__row shows__row--odd" v-for="show in shows">
-        <div class="show__cell show__cell--checkbox">
-          <input type="checkbox" name="name">
-        </div>
-        <div class="show__cell show__cell--name">{{ show.name }} @ {{ show.venue }}</div>
-        <div class="show__cell show__cell--date">{{ show.date }}</div>
-        <div class="show__cell show__cell--contact">{{ show.contact }}</div>
-        <div class="show__cell show__cell--status">{{ show.status }}</div>
-        <div class="show__cell show__cell--venue">{{ show.venue }}</div>
-        <div class="show__cell show__cell--ticketUrl">{{ show.url }}</div>
+        <md-checkbox class="shows__cell shows__cell--checkbox md-primary" name="checkbox"
+                     v-model="show.checkbox"></md-checkbox>
+        <router-link class="show__cell shows__cell--name" to="/dashboard/showdetails">{{ show.name }} @ {{ show.venue }}</router-link>
+        <div class="shows__cell shows__cell--date">{{ show.date }}</div>
+        <div class="shows__cell shows__cell--contact">{{ show.contact }}</div>
+        <div class="shows__cell shows__cell--status">{{ show.status }}</div>
+        <div class="shows__cell shows__cell--venue">{{ show.venue }}</div>
+        <div class="shows__cell shows__cell--ticketUrl">{{ show.url }}</div>
       </div>
     </div>
 
-    <showDetails></showDetails>
   </div>
 </template>
 
@@ -49,14 +45,33 @@
 import { API_URL } from '../../../../config/constants'
 import auth from '../../../api/user'
 import AddShow from './AddShow'
-import ShowDetails from './showDetails'
 export default {
   name: 'shows',
-  components: { AddShow, ShowDetails },
+  components: { AddShow },
   data () {
     return {
       title: 'Shows',
-      shows: this.$store.state.shows
+      checkbox: false,
+      shows: [
+        {
+          name: 'RHCP',
+          venue: 'Olimpic Stadium',
+          date: '11/28/2016',
+          contact: 'Boris Condapopuls',
+          status: 'confirmed',
+          url: 'www.ticketmaster.com',
+          checkbox: false
+        },
+        {
+          name: 'RHCP',
+          venue: 'Olimpic Stadium',
+          date: '11/28/2016',
+          contact: 'Matt Dimond First',
+          status: 'on sale',
+          url: 'Buy ticket',
+          checkbox: false
+        }
+      ]
     }
   },
   computed: {
@@ -68,7 +83,10 @@ export default {
     }
   },
   methods: {
-    addShow () {
+    toggleAddShowPopup: function (event) {
+      this.$refs.AddShow.toggle()
+    },
+    getBandId () {
       let headers = auth.getAuthHeader()
       console.log(headers)
       this.$http.get(API_URL + '/api/band/getBandInfoById/:' + this.$store.state.activeBandId)
