@@ -10,11 +10,11 @@
             id="login__username"
             required
             v-model="credentials.username"
-            @input="emailValidation()"
+            @input="validateEmail"
           ></md-input>
           <span
             class="login__error md-error"
-            v-if="!this.$store.state.emailValid"
+            v-if="!emailValid"
           >
             Please enter valid e-mail
           </span>
@@ -35,14 +35,14 @@
       <md-button
         class="login__btn "
         @click="submit()"
-        :disabled="!this.$store.state.emailValid"
+        :disabled="!emailValid"
       >
         login
       </md-button>
 
 
       <div class="login__welcomeText">
-        Not a user yet? <router-link :to="{path: 'signup'}">Sign Up</router-link>
+        Not a user yet? <router-link to="signup">Sign Up</router-link>
       </div>
 
     </md-whiteframe>
@@ -53,6 +53,7 @@
 
 <script>
 import auth from '../../api/user'
+import { emailValidation } from '../../utils-convenience'
 
 export default {
   name: 'login',
@@ -62,6 +63,7 @@ export default {
         username: '',
         password: ''
       },
+      emailValid: false,
       user: auth.user,
       userId: auth.user.userId,
       activeBandId: auth.band.activeBandId
@@ -74,11 +76,11 @@ export default {
         password: this.credentials.password
       }
       auth.loginUser(user, this)
-      this.$store.commit('addUserId', this.userId)
+      this.$store.dispatch('addUserId', this.userId)
       this.$store.commit('addActiveBandId', this.activeBandId)
     },
-    emailValidation () {
-      this.$store.commit('emailValidation', this.credentials.username)
+    validateEmail () {
+      this.emailValid = emailValidation(this.credentials.username)
     }
   }
 }
