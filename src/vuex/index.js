@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import * as actions from './actions'
 import * as getters from './getters'
 import shows from './modules/shows'
+import user from './modules/user'
 
 Vue.use(Vuex)
 
@@ -14,5 +15,18 @@ export default new Vuex.Store({
   modules: {
     shows,
     user
-  }
+  },
+  strict: debug
 })
+/*
+state: {
+  shows: [],
+  activeBandId: '',
+  emailValid: false
+},
+mutations: {
+  addActiveBandId: (state, bandId) => {
+    state.activeBandId = bandId
+  }
+}
+*/
