@@ -24,17 +24,13 @@
 </template>
 
 <script>
-import auth from '../../api/user'
+import { mapState } from 'vuex'
 
 export default {
-  data () {
-    return {
-      user: auth.user,
-      band: auth.band,
-      member: auth.member
-    }
-  },
-  name: 'navbar'
+  name: 'navbar',
+  computed: mapState({
+    user: state => state.user
+  })
 }
 </script>
 
