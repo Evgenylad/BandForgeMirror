@@ -6,35 +6,57 @@
       <div class="signup__box">
         <md-input-container class="signup__inputBlock md-input-invalid">
           <label class="signup__label" for="signup__username">Username</label>
-          <md-input class="signup__input" id="signup__username" required
-                    v-model="credentials.username"
-                    @input="emailValidation()">
-          </md-input>
-          <span class="signup__error md-error"
-                v-if="!this.$store.state.emailValid">Please enter valid e-mail</span>
+          <md-input
+            class="signup__input"
+            id="signup__username"
+            required
+            v-model="credentials.username"
+            @input="emailValidation()"
+          ></md-input>
+          <span
+            class="signup__error md-error"
+            v-if="!this.$store.state.emailValid"
+          >
+            Please enter valid e-mail
+          </span>
         </md-input-container>
 
         <md-input-container class="signup__inputBlock">
           <label class="signup__label" for="signup__pass">Password</label>
-          <md-input class="signup__input" id="signup__pass" type="password"
-                    v-model="credentials.password">
-          </md-input>
+          <md-input
+            class="signup__input"
+            id="signup__pass"
+            type="password"
+            v-model="credentials.password"
+          ></md-input>
         </md-input-container>
 
         <md-input-container class="signup__inputBlock">
-          <label class="signup__label" for="signup__conf_pass">Confirm Password</label>
-          <md-input class="signup__input" id="signup__conf_pass" type="password"
-                    v-model="credentials.confirmPassword">
-          </md-input>
+          <label
+            class="signup__label"
+            for="signup__conf_pass"
+          >
+            Confirm Password
+          </label>
+          <md-input
+            class="signup__input"
+            id="signup__conf_pass"
+            type="password"
+            v-model="credentials.confirmPassword"
+          ></md-input>
         </md-input-container>
       </div>
 
-      <md-button class="signup__btn "
-                 @click="submit(), changeCurrentModal('OnBoarding')"
-                 :disabled="!this.$store.state.emailValid">Sign UP</md-button>
+      <md-button
+        class="signup__btn "
+        @click="submit(), changeCurrentModal('OnBoarding')"
+        :disabled="!this.$store.state.emailValid"
+      >
+        Sign Up
+      </md-button>
 
       <div class="signup__welcomeText">
-        Not a user yet? Sign Up here.
+        Already a user? <router-link :to="{path: 'login'}">Login</router-link>
       </div>
 
     </md-whiteframe>
