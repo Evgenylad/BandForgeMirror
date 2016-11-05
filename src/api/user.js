@@ -98,6 +98,12 @@ export default {
       this.user.authenticated = false
       router.push('/')
     })
+  },
+
+  getAuthHeader () {
+    return {
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    }
   }
 
   /* // User object will let us check authentication status

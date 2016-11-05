@@ -1,7 +1,7 @@
 <template>
   <div class="root">
     <navbar></navbar>
-    
+
     <div class="root__content">
       <h1 class="root__header"
           v-show="!user.authenticated">sign up for the best diy band management platform.</h1>
@@ -21,13 +21,13 @@
 
 <script>
 import Navbar from './Navbar'
-import Foo from './Foo'
+import Foo from './../Foo'
 import Login from './Login'
 import Signup from './Signup'
 import OnBoarding from './OnBoarding'
 import AddMember from './AddMember'
 
-import auth from '../api/user'
+import auth from '../../api/user'
 
 export default {
   name: 'roots',
@@ -52,7 +52,6 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-@import '../styles/colors'
-@import '../styles/root'
+@import '../../styles/Root/root'
 
 </style>

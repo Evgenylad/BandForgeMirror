@@ -1,6 +1,7 @@
-@import '../styles/colors'
+@import '../../styles/colors'
 @media(min-width: 768px)
  .navbarInner
+  position: relative;
   display: block;
   width: 100%;
 
@@ -64,7 +65,6 @@
    display: flex;
    width: 144px;
 
-
   &__btn
    &--find
     width: 72px;
@@ -81,3 +81,40 @@
     color: #ffffff;
     transform: translateY(-50%);
     cursor: pointer;
+
+  &__list
+   display: block;
+   position: absolute;
+   left: 0;
+   top: 64px;
+   width: 256px;
+   min-height: 57px;
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   background-color: tile-background;
+   z-index: 10;
+   border-bottom-right-radius: 4px;
+   border-bottom-left-radius: 4px;
+   box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.20);
+
+  &__listItem
+   width: 100%;
+   height: 57px;
+   padding-left: 22px;
+   line-height: 57px;
+   color: #ffffff;
+   &:hover
+    background-color: #4c5054;
+
+  &__link
+   text-decoration: none !important;
+   color: #ffffff;
+   cursor: pointer;
+
+.moveDown-enter-active, .moveDown-leave-active {
+  transition: opacity .5s
+}
+.moveDown-enter, .moveDown-leave-active {
+  opacity: 0
+}

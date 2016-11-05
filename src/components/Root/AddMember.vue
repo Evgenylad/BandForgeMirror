@@ -32,8 +32,8 @@
 </template>
 
 <script>
-import auth from '../api/user'
-import { router } from '../main'
+import auth from '../../api/user'
+import { router } from '../../main'
 
 export default {
   name: 'addMember',
@@ -71,7 +71,6 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-@import '../styles/colors'
-@import '../styles/addMember'
+@import '../../styles/Root/addMember'
 
 </style>
