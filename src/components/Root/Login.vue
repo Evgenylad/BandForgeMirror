@@ -1,5 +1,5 @@
 <template>
-  <div class="login" v-show="!user.authenticated">
+  <div class="login">
 
     <md-whiteframe class="login__container">
       <div class="login__box">
@@ -12,10 +12,7 @@
             v-model="credentials.username"
             @input="validateEmail"
           ></md-input>
-          <span
-            class="login__error md-error"
-            v-if="!emailValid"
-          >
+          <span class="login__error md-error" v-if="!emailValid">
             Please enter valid e-mail
           </span>
         </md-input-container>
@@ -32,11 +29,7 @@
         </md-input-container>
       </div>
 
-      <md-button
-        class="login__btn "
-        @click="submit()"
-        :disabled="!emailValid"
-      >
+      <md-button class="login__btn " @click="submit" :disabled="!emailValid">
         login
       </md-button>
 
@@ -52,7 +45,6 @@
 </template>
 
 <script>
-import auth from '../../api/user'
 import { emailValidation } from '../../utils-convenience'
 
 export default {
@@ -63,10 +55,7 @@ export default {
         username: '',
         password: ''
       },
-      emailValid: false,
-      user: auth.user,
-      userId: auth.user.userId,
-      activeBandId: auth.band.activeBandId
+      emailValid: false
     }
   },
   methods: {
@@ -75,19 +64,15 @@ export default {
         username: this.credentials.username,
         password: this.credentials.password
       }
-      auth.loginUser(user, this)
-      this.$store.dispatch('addUserId', this.userId)
-      this.$store.commit('addActiveBandId', this.activeBandId)
+      this.$store.dispatch('loginUser', user)
     },
     validateEmail () {
       this.emailValid = emailValidation(this.credentials.username)
     }
   }
 }
-
 </script>
 
 <style scoped lang="stylus">
 @import '../../styles/Root/login'
-
 </style>
