@@ -57,10 +57,13 @@ export default {
       this.user.authenticated = true
       console.log(this.band.added)
       console.log('ifsuccess: ' + this.user.authenticated)
+      router.push('onboarding')
     })
     .catch((err) => {
       console.log(user)
-      console.log('Error logging in user: ', err)
+      console.log('Error signing up user: ', err)
+      // add error handling for error signing up user
+      router.push('signup')
     })
   },
 
