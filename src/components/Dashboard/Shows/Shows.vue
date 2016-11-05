@@ -71,10 +71,10 @@ export default {
     addShow () {
       let headers = auth.getAuthHeader()
       console.log(headers)
-      this.$http.get(API_URL + '/api/band/getBandInfoById/:' + this.$store.state.activeBandId, headers)
+      this.$http.get(API_URL + '/api/band/getBandInfoById/:' + this.$store.state.activeBandId)
       .then((response) => {
         console.log(response)
-        var v = response.blob()
+        var v = response.json()
         console.log(v)
       })
       .catch((err) => {
