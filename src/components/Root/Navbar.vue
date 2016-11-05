@@ -9,13 +9,13 @@
       <h2 class="navbar__title md-title">BandForge</h2>
 
       <div class="navbar__userBlock" v-if="!user.authenticated">
-        <md-button class="navbar__link">
-          <router-link to="signup">Sign Up</router-link>
-        </md-button>
+        <router-link to="signup">
+          <md-button class="navbar__link">Sign Up</md-button>
+        </router-link>
 
-        <md-button class="navbar__link">
-          <router-link to="login">Login</router-link>
-        </md-button>
+        <router-link to="login">
+          <md-button class="navbar__link">Login</md-button>
+        </router-link>
       </div>
     </md-toolbar>
 
