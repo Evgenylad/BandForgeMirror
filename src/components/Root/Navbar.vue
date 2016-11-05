@@ -9,14 +9,12 @@
       <h2 class="navbar__title md-title">BandForge</h2>
 
       <div class="navbar__userBlock" v-if="!user.authenticated">
-        <md-button class="navbar__link"
-                   @click="changeCurrentModal('Signup')">
-          Sign Up
+        <md-button class="navbar__link">
+          <router-link to="signup">Sign Up</router-link>
         </md-button>
 
-        <md-button class="navbar__link"
-                   @click="changeCurrentModal('Login')">
-          Login
+        <md-button class="navbar__link">
+          <router-link to="login">Login</router-link>
         </md-button>
       </div>
     </md-toolbar>
@@ -27,6 +25,7 @@
 
 <script>
 import auth from '../../api/user'
+
 export default {
   data () {
     return {
@@ -35,12 +34,7 @@ export default {
       member: auth.member
     }
   },
-  name: 'navbar',
-  methods: {
-    changeCurrentModal (curentView) {
-      this.$store.commit('changeCurrentModal', curentView)
-    }
-  }
+  name: 'navbar'
 }
 </script>
 
