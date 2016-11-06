@@ -20,7 +20,7 @@ export default {
   },
 
   getUser (context) {
-    context.$http.get(API_URL + '/user')
+    context.axios.get(API_URL + '/user')
     .then((user) => {
       console.log('user is: ', user)
     })
@@ -30,7 +30,7 @@ export default {
   },
 
   loginUser (user, context) {
-    context.$http.post(API_URL + '/user/login', user)
+    context.axios.post(API_URL + '/user/login', user)
     .then((user) => {
       localStorage.setItem('token', user.body.token)
       this.user.authenticated = true
@@ -49,7 +49,7 @@ export default {
   },
 
   signup (user, context) {
-    context.$http.post(API_URL + '/user/signup', user)
+    context.axios.post(API_URL + '/user/signup', user)
     .then((user) => {
       console.log('User logged in')
       console.log(user.status)
@@ -68,7 +68,7 @@ export default {
   },
 
   createNewBand (band, context) {
-    context.$http.post(API_URL + '/api/band/createNewBand', band)
+    context.axios.post(API_URL + '/api/band/createNewBand', band)
     .then((user) => {
       console.log('User logged in')
       console.log(band)
@@ -94,7 +94,7 @@ export default {
   },
 
   logoutUser (context) {
-    context.$http.get(API_URL + '/user/logout')
+    context.axios.get(API_URL + '/user/logout')
     .then(() => {
       console.log('user logged out')
       localStorage.removeItem('token')
@@ -116,7 +116,7 @@ export default {
 
   // Send a request to the login URL and save the returned JWT
   login (context, creds, redirect) {
-    context.$http.post(API_URL + '/user', creds, (data) => {
+    context.axios.post(API_URL + '/user', creds, (data) => {
       this.user.authenticated = true
     }).error((err) => {
       context.error = err

@@ -4,8 +4,9 @@ import Vuex from 'vuex'
 import VueRouter from 'vue-router'
 import VueMaterial from 'vue-material'
 import VueLocalStorage from 'vue-localstorage'
-import VueResource from 'vue-resource'
 import Keen from 'keen-ui'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 import Root from './components/Root/Root'
 import Foo from './components/Foo'
@@ -27,7 +28,7 @@ Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(VueMaterial)
 Vue.use(VueLocalStorage)
-Vue.use(VueResource)
+Vue.use(VueAxios, axios)
 Vue.use(Keen)
 
 // Configure Theme
