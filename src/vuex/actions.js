@@ -1,15 +1,26 @@
 import * as types from './mutation-types'
-
-export const addUserId = ({ commit }, userId) => {
-  console.log('in action', userId)
-  commit(types.ADD_USER_ID, userId)
-}
+import { router } from '../main'
+import userRoute from '../api/user'
 
 export const loginUser = ({ commit }, credentials) => {
-  commit(types.LOGIN_USER, credentials)
+  userRoute.loginUser(credentials).then(user => {
+    commit(types.SET_AUTHENTICATION, true)
+    commit(types.SET_USER, user)
+    router.push('/dashboard/shows')
+  })
 }
 
-export const loginSuccess = ({ commit }, user) => {
-  commit(types.SET_USER_ID, user.id)
-  commit(types.SET_BAND, user.bandId)
+export const signupUser = ({ commit }, userInfo) => {
+  userRoute.signup(userInfo).then(user => {
+    commit(types.SET_AUTHENTICATION, true)
+    commit(types.SET_USER, user)
+    router.push('onboarding')
+  })
+}
+
+export const logoutUser = ({ commit }) => {
+  userRoute.logoutUser().then(() => {
+    commit(types.LOGOUT_USER)
+    router.push('/')
+  })
 }

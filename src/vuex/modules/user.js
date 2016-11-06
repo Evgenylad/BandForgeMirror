@@ -1,22 +1,35 @@
-import user from '../../api/user'
 import * as types from '../mutation-types'
+const localStorage = window.localStorage
 
 const state = {
-  id: '',
+  active_band_id: null,
+  administrator: false,
+  first_name: null,
+  last_name: null,
+  onboarded: false,
+  user_id: null,
   authenticated: false
 }
 
 const mutations = {
-  [types.LOGIN_USER] (state, credentials) {
-    console.log('login user mutations', credentials)
-    user.getUser(credentials).then(results => {
-      console.log('in user.js', results)
-    })
+  // this might be incomplete. Need to clear entire store
+  [types.LOGOUT_USER] (state) {
+    for (let key in state) {
+      state[key] = null
+    }
+    localStorage.removeItem('token')
   },
 
-  [types.ADD_USER_ID] (state, userId) {
-    console.log('in user', userId)
-    state.id = userId
+  [types.SET_USER] (state, user) {
+    for (let key in state) {
+      if (state[key] === user[key]) state[key] = user[key]
+    }
+    localStorage.setItem('token', user.token)
+  },
+
+  [types.SET_AUTHENTICATION] (state, authorized) {
+    console.log('changing authorization to:', authorized)
+    state.authenticated = authorized
   }
 }
 
