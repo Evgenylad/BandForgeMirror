@@ -86,9 +86,7 @@ export default {
         username: this.credentials.username,
         password: this.credentials.password
       }
-      console.log(user)
-      // auth.signup(user, this)
-      this.$store.dispatch('addUserId', 'testUserId')
+      this.$store.dispatch('signupUser', user)
     },
     validateEmail () {
       this.emailValid = emailValidation(this.credentials.username)
