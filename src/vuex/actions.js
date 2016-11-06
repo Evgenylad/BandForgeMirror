@@ -12,6 +12,7 @@ export const loginUser = ({ commit }, credentials) => {
 
 export const signupUser = ({ commit }, userInfo) => {
   userRoute.signup(userInfo).then(user => {
+    console.log('signing up user', user)
     commit(types.SET_AUTHENTICATION, true)
     commit(types.SET_USER, user)
     router.push('onboarding')
