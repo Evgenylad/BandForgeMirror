@@ -22,7 +22,7 @@ export default new Vuex.Store({
       state.userId = userId
     },
     emailValidation: (state, email) => {
-      let regExp = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i
+      let regExp = /^[\w-.]+@[\w-]+\.[a-z]{2,4}$/i
       if (regExp.test(email)) {
         console.log('true')
         state.emailValid = true
