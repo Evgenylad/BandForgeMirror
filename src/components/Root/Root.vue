@@ -3,15 +3,24 @@
     <navbar></navbar>
 
     <div class="root__content">
-      <h1 class="root__header"
-          v-show="!user.authenticated">sign up for the best diy band management platform.</h1>
-      <h1 class="root__header"
-          v-show="user.authenticated && !band.added">We need a few things from you first.</h1>
-      <h1 class="root__header"
-          v-show="user.authenticated && band.added & !member.added">Let's invite your band mates.</h1>
+      <h1 class="root__header" v-show="!user.authenticated">
+        sign up for the best diy band management platform.
+      </h1>
+      <h1
+        class="root__header"
+        v-show="user.authenticated && !user.active_band_id"
+      >
+        We need a few things from you first.
+      </h1>
+      <h1
+        class="root__header"
+        v-show="user.authenticated && user.active_band_id & !member.added"
+      >
+        Let's invite your band mates.
+      </h1>
 
       <transition name="modal" mode="out-in">
-        <component v-bind:is="this.$store.state.currentView"></component> // Dynamic component for SignUp, OnBoarding, AddMember components
+        <router-view></router-view>
       </transition>
     </div>
 
@@ -26,18 +35,10 @@ import Login from './Login'
 import Signup from './Signup'
 import OnBoarding from './OnBoarding'
 import AddMember from './AddMember'
-
-import auth from '../../api/user'
+import { mapState } from 'vuex'
 
 export default {
-  name: 'roots',
-  data () {
-    return {
-      user: auth.user,
-      band: auth.band,
-      member: auth.member
-    }
-  },
+  name: 'root',
   components: {
     Navbar,
     Foo,
@@ -45,13 +46,21 @@ export default {
     Signup,
     OnBoarding,
     AddMember
+  },
+  computed: mapState({
+    user: state => state.user
+  }),
+  // this is only here so view will load. This will come from state later.
+  data () {
+    return {
+      member: {
+        added: null
+      }
+    }
   }
 }
 </script>
 
-</script>
-
 <style scoped lang="stylus">
 @import '../../styles/Root/root'
-
 </style>

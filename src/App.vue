@@ -5,24 +5,10 @@
 </template>
 
 <script>
-import Root from './components/Root/Root'
-import Dashboard from './components/Dashboard/Dashboard'
-import store from './vuex/store'
-import auth from './api/user'
+import store from './vuex'
 
 export default {
   name: 'app',
-  data () {
-    return {
-      user: auth.user,
-      band: auth.band,
-      member: auth.member
-    }
-  },
-  components: {
-    Root,
-    Dashboard
-  },
   store
 }
 </script>
@@ -31,9 +17,10 @@ export default {
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons")
 @import '../node_modules/vue-material/dist/vue-material.css'
 @import '/styles/colors'
+
 .app
- height: 100%
- background: main-background;
+  height: 100%
+  background: main-background;
 body
   height: 100%
   overflow-y: hidden

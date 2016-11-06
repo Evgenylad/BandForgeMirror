@@ -1,50 +1,72 @@
 <template>
   <div class="signup">
-
     <md-whiteframe class="signup__container">
-
       <div class="signup__box">
         <md-input-container class="signup__inputBlock md-input-invalid">
-          <label class="signup__label" for="signup__username">Username</label>
-          <md-input class="signup__input" id="signup__username" required
-                    v-model="credentials.username"
-                    @input="emailValidation()">
-          </md-input>
-          <span class="signup__error md-error"
-                v-if="!this.$store.state.emailValid">Please enter valid e-mail</span>
+          <label class="signup__label" for="signup__username">
+            Username
+          </label>
+          <md-input
+            class="signup__input"
+            id="signup__username"
+            required
+            v-model="credentials.username"
+            @input="validateEmail"
+          ></md-input>
+          <span class="signup__error md-error" v-if="!emailValid">
+            Please enter valid e-mail
+          </span>
         </md-input-container>
 
         <md-input-container class="signup__inputBlock">
           <label class="signup__label" for="signup__pass">Password</label>
-          <md-input class="signup__input" id="signup__pass" type="password"
-                    v-model="credentials.password">
-          </md-input>
+          <md-input
+            class="signup__input"
+            id="signup__pass"
+            type="password"
+            v-model="credentials.password"
+            @input="validatePasswordMatch"
+          ></md-input>
         </md-input-container>
 
         <md-input-container class="signup__inputBlock">
-          <label class="signup__label" for="signup__conf_pass">Confirm Password</label>
-          <md-input class="signup__input" id="signup__conf_pass" type="password"
-                    v-model="credentials.confirmPassword">
-          </md-input>
+          <label class="signup__label" for="signup__conf_pass">
+            Confirm Password
+          </label>
+          <md-input
+            class="signup__input"
+            id="signup__conf_pass"
+            type="password"
+            v-model="credentials.confirmPassword"
+            @input="validatePasswordMatch"
+          ></md-input>
+          <span
+            class="signup__error password-match"
+            v-show="credentials.password && !passwordsMatch"
+          >
+            Passwords do not match
+          </span>
         </md-input-container>
       </div>
 
-      <md-button class="signup__btn "
-                 @click="submit(), changeCurrentModal('OnBoarding')"
-                 :disabled="!this.$store.state.emailValid">Sign UP</md-button>
+      <md-button
+        class="signup__btn "
+        @click="submit"
+        :disabled="!emailValid || !passwordsMatch"
+      >
+        Sign Up
+      </md-button>
 
       <div class="signup__welcomeText">
-        Not a user yet? Sign Up here.
+        Already a user? <router-link to="login">Login</router-link>
       </div>
-
     </md-whiteframe>
-
-
   </div>
 </template>
 
 <script>
-import auth from '../../api/user'
+import { emailValidation } from '../../utils-convenience'
+
 export default {
   name: 'signup',
   data () {
@@ -54,7 +76,8 @@ export default {
         password: '',
         confirmPassword: ''
       },
-      user: auth.user
+      passwordsMatch: false,
+      emailValid: false
     }
   },
   methods: {
@@ -63,13 +86,18 @@ export default {
         username: this.credentials.username,
         password: this.credentials.password
       }
-      auth.signup(user, this)
+      this.$store.dispatch('signupUser', user)
     },
-    changeCurrentModal (currentView) {
-      this.$store.commit('changeCurrentModal', currentView)
+    validateEmail () {
+      this.emailValid = emailValidation(this.credentials.username)
     },
-    emailValidation () {
-      this.$store.commit('emailValidation', this.credentials.username)
+    validatePasswordMatch () {
+      console.log('validating')
+      if (this.credentials.password !== this.credentials.confirmPassword) {
+        this.passwordsMatch = false
+      } else {
+        this.passwordsMatch = true
+      }
     }
   }
 }
@@ -79,4 +107,7 @@ export default {
 @import '../../styles/colors'
 @import '../../styles/Root/signup'
 
+.password-match
+  font-size 12px
+  margin-right 90px
 </style>

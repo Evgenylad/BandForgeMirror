@@ -9,15 +9,13 @@
       <h2 class="navbar__title md-title">BandForge</h2>
 
       <div class="navbar__userBlock" v-if="!user.authenticated">
-        <md-button class="navbar__link"
-                   @click="changeCurrentModal('Signup')">
-          Sign Up
-        </md-button>
+        <router-link to="signup">
+          <md-button class="navbar__link">Sign Up</md-button>
+        </router-link>
 
-        <md-button class="navbar__link"
-                   @click="changeCurrentModal('Login')">
-          Login
-        </md-button>
+        <router-link to="login">
+          <md-button class="navbar__link">Login</md-button>
+        </router-link>
       </div>
     </md-toolbar>
 
@@ -26,21 +24,13 @@
 </template>
 
 <script>
-import auth from '../../api/user'
+import { mapState } from 'vuex'
+
 export default {
-  data () {
-    return {
-      user: auth.user,
-      band: auth.band,
-      member: auth.member
-    }
-  },
   name: 'navbar',
-  methods: {
-    changeCurrentModal (curentView) {
-      this.$store.commit('changeCurrentModal', curentView)
-    }
-  }
+  computed: mapState({
+    user: state => state.user
+  })
 }
 </script>
 
