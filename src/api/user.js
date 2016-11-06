@@ -46,20 +46,6 @@ export default {
     })
   },
 
-  checkAuth () {
-    return new Promise((resolve, reject) => {
-      var jwt = window.localStorage.getItem('token')
-      if (jwt) {
-        this.user.authenticated = true
-        console.log(router)
-        console.log('AUTH true')
-      } else {
-        this.user.authenticated = false
-        console.log('AUTH false')
-      }
-    })
-  },
-
   logoutUser () {
     return new Promise((resolve, reject) => {
       axios

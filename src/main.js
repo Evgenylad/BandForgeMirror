@@ -22,8 +22,6 @@ import Merch from './components/Dashboard/Merch'
 import Bands from './components/Dashboard/Bands'
 import Dashboard from './components/Dashboard/Dashboard'
 
-import auth from './api/user'
-
 Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(VueMaterial)
@@ -100,10 +98,9 @@ export const router = new VueRouter({
   ]
 })
 
-auth.checkAuth()
-
 router.beforeEach((router, redirect, next) => {
-  if (auth.user.authenticated && router.path === '/') {
+  const jwt = window.localStorage.getItem('token')
+  if (jwt && router.path === '/') {
     next('/dashboard/shows')
   } else {
     next()
