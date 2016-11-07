@@ -1,7 +1,7 @@
 <template>
   <div class="shows">
     <addShow ref="AddShow"></addShow>
-    <md-button class="shows__btn shows__btn--add" @click="toggleAddShowPopup()">Add show</md-button>
+    <md-button class="shows__btn shows__btn--add" @click="getBandId()">Add show</md-button>
     <div class="shows__container">
       <h2 class="shows__title">All Shows</h2>
       <div class="shows__row shows__row--even">
@@ -89,7 +89,7 @@ export default {
     getBandId () {
       let headers = auth.getAuthHeader()
       console.log(headers)
-      this.$http.get(API_URL + '/api/band/getBandInfoById/:' + this.$store.state.activeBandId)
+      this.axios.get(API_URL + '/user')
       .then((response) => {
         console.log(response)
         var v = response.json()
