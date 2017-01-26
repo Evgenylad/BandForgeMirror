@@ -36,10 +36,10 @@ export default {
         fourth: 'Instagram'
       },
       links: {
-        first: 'https://www.reddit.com/',
-        second: 'Report an Issue',
-        third: 'https://www.facebook.com/',
-        fourth: 'https://www.instagram.com/'
+        first: 'https://www.reddit.com/r/bandforge',
+        second: 'https://wantoo.io/bandforge/',
+        third: 'https://www.facebook.com/bandforge',
+        fourth: 'https://www.instagram.com/bandforge'
       }
     }
   }

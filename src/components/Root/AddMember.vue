@@ -33,7 +33,7 @@
 
 <script>
 import auth from '../../api/user'
-import { router } from '../../main'
+import { router } from '../../router'
 
 export default {
   name: 'addMember',
@@ -63,7 +63,7 @@ export default {
       this.members.push(newMember)
     },
     openDashboard () {
-      router.push('/dashboard/shows')
+      router.push('/index/shows')
       this.$store.commit('changeCurrentModal', 'Login')
     }
   }

@@ -1,13 +1,16 @@
 import { API_URL } from '../../config/constants'
-import { router } from '../main'
+import { router } from '../router'
 import axios from 'axios'
 
 export default {
   getUser (context) {
     return new Promise((resolve, reject) => {
       axios
-        .get(API_URL + '/user')
-        .then(result => resolve(result.data.user))
+        .get(API_URL + '/api/user/')
+        .then(result => {
+          console.log(result.data)
+          return resolve(result.data.user)
+        })
         .catch((err) => console.log('Error getting user ', err))
     })
   },
@@ -16,7 +19,10 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .post(API_URL + '/user/login', user)
-        .then(result => resolve(result.data.user))
+        .then(result => {
+          console.log(result)
+          resolve(result.data.user)
+        })
         .catch((err) => console.log('Error logging in user: ', err))
     })
   },
@@ -34,18 +40,6 @@ export default {
     })
   },
 
-  createNewBand (band, context) {
-    return new Promise((resolve, reject) => {
-      axios
-        .post(API_URL + '/api/band/createNewBand', band)
-        .then(result => resolve(result))
-        .catch((err) => {
-          console.log(band)
-          console.log('Band did NOT added: ', err)
-        })
-    })
-  },
-
   logoutUser () {
     return new Promise((resolve, reject) => {
       axios
@@ -57,7 +51,7 @@ export default {
 
   getAuthHeader () {
     return {
-      'Authorization': 'Bearer ' + window.localStorage.getItem('token')
+      'x-access-token ': window.localStorage.getItem('token')
     }
   }
 

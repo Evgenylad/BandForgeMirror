@@ -1,0 +1,55 @@
+@import '../../styles/colors'
+.sidebar
+ width: (256/1920)*100%;
+ min-width: 256px;
+ height: calc(100% - 64px);
+ background: secondary-background;
+ opacity: 0.99
+
+ &__list
+  margin-bottom: 4px;
+  padding-bottom: 12px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #434343;
+
+ &__item
+  cursor: pointer !important;
+
+ &__listItemName
+  font-family: Roboto-Regular;
+  font-size: 15px;
+  color: #A4A4A4;
+  letter-spacing: 0px;
+
+ &__icon
+  margin-right: 22px !important;
+  color: #A4A4A4;
+
+ &__userEmail
+  width: 100%;
+  margin-bottom: 21px;
+  text-align: center;
+  font-family: Roboto-Regular;
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: 0px;
+  color: secondary-text-color;
+  cursor: pointer;
+
+.sidebar__item:hover > .md-list-item-container > .md-list-item-holder > .md-icon
+  color: secondary-text-color !important;
+
+.sidebar__item:hover > .md-list-item-container > .md-list-item-holder > .sidebar__listItemName
+  color: secondary-text-color !important;
+
+.sidebar__item:hover > .md-list-item-container > .md-icon
+  color: secondary-text-color !important;
+
+.sidebar__item:hover > .md-list-item-container > .sidebar__listItemName
+  color: secondary-text-color !important;
+
+.router-link-active > .sidebar__listItemName
+  color: secondary-text-color
+
+.router-link-active > .sidebar__icon
+  color: secondary-text-color

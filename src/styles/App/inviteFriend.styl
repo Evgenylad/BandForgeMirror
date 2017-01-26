@@ -1,0 +1,89 @@
+.inviteFriend
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background: overlay;
+ z-index: 100;
+ &__wrapper
+  margin: 0 auto;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: green-background;
+
+ &__container
+  display: flex;
+  flex-direction: column;
+  width: 430px;
+  min-height: 286px;
+
+  padding-top: 15px;
+  padding-left: 25px;
+  padding-right: 30px;
+  background: #393c42;
+  border: 1px solid rgba(150,150,150,0.11);
+  box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.20);
+  border-radius: 2px;
+
+ &__title
+  margin: 0;
+  margin-bottom: 66px;
+  padding: 0;
+  font-size: 24px;
+  letter-spacing: -0.05px;
+
+ &__inputBlock
+  position: relative;
+  width: 330px;
+  height: 45px;
+  min-height: 30px;
+  margin: 0 auto;
+  margin-bottom: 91px;
+  cursor: pointer;
+  &::after
+   background-color: inherit !important;
+
+ &__label
+  top: 20px;
+  height: 32px;
+  align-self: center;
+  font-family: Roboto;
+  font-size: 16px;
+  color: green-background !important;
+  cursor: pointer;
+
+ &__input
+  color: #fafafa !important;
+  height: 30px;
+  padding-left: 10px;
+  font-family: Roboto;
+  letter-spacing: -0.01px;
+  border-bottom: 1px solid green-background;
+  &:focus
+   border-bottom: 1px solid input-focus;
+
+ &__btnBlock
+  display: flex;
+  justify-content: flex-end;
+
+ &__btn
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: -0.03px;
+  &--cancel
+   color: #8f9499 !important;
+  &--add
+   align-self: center;
+   width: 30px;
+   height: 30px;
+   min-width: 0;
+   min-height: 0;
+   margin-bottom: 26px;
+   padding: 0;
+   border-radius: 50%;
+   box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.16), 0px 2px 5px 0px rgba(0,0,0,0.26);

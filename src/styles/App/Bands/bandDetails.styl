@@ -1,0 +1,135 @@
+@import '../../../styles/colors'
+.bandDetails
+  position: relative;
+  width: 100%;
+  height: 90%;
+  overflow: scroll;
+  padding-top: 97px;
+  padding-left: calc(109/1920*100%);
+  padding-right: calc(109/1920*100%);
+  margin: 0 auto;
+  z-index: 1;
+  color: green-background;
+
+  &__container
+   width: 100%;
+   min-height: 699px;
+
+   background: tile-background;
+   border: 1px solid rgba(150,150,150,0.11);
+   box-shadow: 0px 17px 50px 0px rgba(0,0,0,0.19), 0px 12px 15px 0px rgba(0,0,0,0.24);
+   border-radius: 4px;
+
+  &__header
+   width: 100%;
+   height: 80px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding-left: calc(30/1441*100%);
+   padding-right: calc(30/1441*100%);
+   border-bottom: 1px solid #6e7175;
+
+  &__title
+   display: block;
+   width: 32%;
+   height: auto;
+   margin: 0;
+   font-size: 36px;
+   &--column
+    width: 100%;
+    height: 45px;
+    font-size: 20px;
+    border-bottom: 1px solid #6e7175;
+   &--members
+    margin-bottom: 15px;
+   &--management
+    margin-top: 15px;
+
+  &__content
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+   padding-left: 4%;
+   padding-right: 4%;
+   padding-top: 34px;
+
+  &__column
+   display: flex;
+   flex-direction: column;
+   &--first
+    width: 48%;
+   &--second
+    width: 48%;
+
+  &__band
+   display: flex;
+   flex-direction: column;
+   min-height: 80px;
+
+  &__details
+   display: flex;
+   &--band
+    min-height: 79px;
+    align-items: center;
+   &--management
+    padding-top: 15px;
+
+  &__member
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 30px;
+
+  &__name
+   display: flex;
+   align-items: flex-start;
+   width: 50%;
+
+  &__phone
+   display: flex;
+   align-items: flex-start;
+   width: 50%;
+
+  &__block
+   display: flex;
+   flex-direction: column;
+   margin-left: 4%;
+   &--phone
+    margin-left: 9%;
+   &--name
+    margin-left: 9%;
+
+  &__emails
+   &:first-of-type
+    margin-bottom: 38px;
+
+  &__blockTitle
+   color: #7d7e80;
+
+  &__description
+   color: #ffffff;
+
+  &__managerDetails
+   display: flex;
+   flex-direction: column;
+   border-bottom: 1px solid #6e7175;
+
+  &__managerEmails
+   display: flex;
+   flex-direction: column;
+   padding-top: 25px;
+   padding-bottom: 25px;
+
+  &__row
+   display: flex;
+   align-items: flex-start;
+   &--managerName
+    width: 50%;
+    margin-bottom: 23px;
+   &--managerPhone
+    width: 50%;
+    margin-bottom: 23px;
+
+  &__icon
+   &--band
+    margin-bottom: 10px;

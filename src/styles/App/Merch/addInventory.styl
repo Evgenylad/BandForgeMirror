@@ -1,0 +1,119 @@
+.addInventory
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background: overlay;
+ z-index: 100;
+ &__wrapper
+  margin: 0 auto;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: green-background;
+
+ &__container
+  display: flex;
+  flex-direction: column;
+  width: 430px;
+  min-height: 500px;
+
+  padding-top: 15px;
+  padding-left: 25px;
+  padding-right: 30px;
+  background: #393c42;
+  border: 1px solid rgba(150,150,150,0.11);
+  box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.20);
+  border-radius: 2px;
+
+ &__title
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 0;
+  font-size: 24px;
+  letter-spacing: -0.05px;
+  &--image
+   font-size: 20px;
+   letter-spacing: -0.04px;
+   margin-bottom: 10px;
+
+ &__content
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: -0.04px;
+  font-weight: 500;
+  &:last-of-type
+   margin-bottom: 52px;
+
+ &__inputBlock
+  position: relative;
+  width: 330px;
+  height: 45px;
+  min-height: 30px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  cursor: pointer;
+  &--last
+    margin-bottom: 50px;
+  &::after
+   background-color: inherit !important;
+
+ &__label
+  top: 20px;
+  height: 32px;
+  align-self: center;
+  font-family: Roboto;
+  font-size: 16px;
+  color: green-background !important;
+  cursor: pointer;
+  text-transform: capitalize;
+
+ &__input
+  color: #fafafa !important;
+  height: 30px;
+  padding-left: 10px;
+  font-family: Roboto;
+  letter-spacing: -0.01px;
+  border-bottom: 1px solid green-background;
+  &:focus
+   border-bottom: 1px solid input-focus;
+
+ &__dragAndDrop
+  width: 350px;
+  height: 110px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  padding-top: 20px;
+  border: 1px dashed #979797
+  border-radius: 3px;
+
+ &__dragAndDropDescription
+  display: block;
+  width: 91px;
+  margin: 0 auto;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #CCCCCC;
+  letter-spacing: -0.03px;
+  margin-bottom: 10px;
+
+ &__icon
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+
+ &__btnBlock
+  display: flex;
+  justify-content: flex-end;
+
+ &__btn
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: -0.03px;
+  &--cancel
+   color: #8f9499 !important;
